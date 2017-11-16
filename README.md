@@ -2,6 +2,6 @@
 
 Vous trouverez sur cette page le document `.Rmd` à télécharger pour la présentation d'aujourd'hui. Vous trouverez également la présentation qui sera utilisée.
 
-- Voici la [présentation](https://cdn.rawgit.com/desautm/R_RStudio_RMarkdown/49955d94/slides_presentation_r.html) utilisée aujourd'hui.
+- Voici la [présentation](https://cdn.rawgit.com/desautm/R_RStudio_RMarkdown/b3513130/slides_presentation_r.html) utilisée aujourd'hui.
 
 - Voici le [document](https://raw.githubusercontent.com/desautm/R_RStudio_RMarkdown/master/presentation_r.Rmd) à télécharger.
