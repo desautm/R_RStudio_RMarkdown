@@ -16,6 +16,27 @@ output:
 options(htmltools.dir.version = FALSE)
 knitr::opts_chunk$set(fig.align = 'center')
 ```
+class: center, middle
+
+# Rendez-vous à l'adresse suivante:
+
+## https://github.com/desautm/R_RStudio_RMarkdown
+
+---
+
+### En arrivant à cette page, vous devez télécharger le document en cliquant avec le bouton droit de la souris.
+
+![](images/EnregistrerFichier.png)
+
+### Enregistrer votre fichier à un endroit où vous pourrez le retrouver et l'ouvrir avec `RStudio`.
+
+---
+
+### Une fois ouvert, vous devriez obtenir quelque chose de semblable à ceci.
+
+![](images/FichierOuvertRStudio.png)
+
+---
 
 # Introduction
 
