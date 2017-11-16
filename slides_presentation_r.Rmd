@@ -14,7 +14,9 @@ output:
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
-knitr::opts_chunk$set(fig.align = 'center')
+knitr::opts_chunk$set(fig.align = 'center',
+                      fig.width = 6, 
+                      fig.height = 6)
 ```
 class: middle
 
@@ -722,6 +724,10 @@ class: middle, center, inverse
 
 # Graphiques
 
+---
+
+# Graphiques
+
 En langage `R`, il existe plusieurs façons de faire des graphiques.
 
 - Les graphiques de `base` ou `traditionnels`.
@@ -734,3 +740,464 @@ Dans la librairie `ggplot2`, il y a deux façons de produire des graphiques:
 
 - La commande `qplot`, qui correspond à __quick plot__. Cette commande produit des graphiques rapidement en tentant de choisir le bon graphique en fonction des variables utilisées.
 - La commande `ggplot`, qui permet d'avoir beaucoup plus de précision sur la sortie graphique.
+
+---
+class: middle, center, inverse
+
+# Le diagramme à bandes
+
+---
+
+Tracez le diagramme à bandes de la variable `clarity`.
+
+--
+
+```{r eval=FALSE}
+qplot(diamonds$clarity, xlab="Clarté", ylab="Fréquence", main="Un beau titre...")
+```
+
+--
+
+```{r echo=FALSE}
+qplot(diamonds$clarity, xlab="Clarté", ylab="Fréquence", main="Un beau titre...")
+```
+
+---
+
+```{r eval=FALSE}
+ggplot(diamonds, aes(clarity)) + 
+  geom_bar() +
+  labs(
+    x = "Clarté",
+    y = "Fréquence",
+    title = "Un beau titre...")
+```
+
+--
+
+```{r echo=FALSE}
+ggplot(diamonds, aes(clarity)) + 
+  geom_bar() +
+  labs(
+    x = "Clarté",
+    y = "Fréquence",
+    title = "Un beau titre...")
+```
+
+---
+class: middle, center, inverse
+
+# Le diagramme à bâtons
+
+---
+
+Tracez le diagramme à bâtons de la variable `cyl` de la base de données `mtcars` (Cette base de données est toujours disponible dans `R`).
+
+--
+
+```{r eval=FALSE}
+qplot(mtcars$cyl, xlab="Nombre de cylindres", ylab="Fréquence", main="Un beau titre...")
+```
+
+--
+
+```{r echo=FALSE}
+qplot(mtcars$cyl, xlab="Nombre de cylindres", ylab="Fréquence", main="Un beau titre...")
+```
+
+---
+
+```{r eval=FALSE}
+ggplot(mtcars, aes(cyl)) +
+  geom_bar(width = 0.1) +
+  labs(
+    x = "Nombre de cylindres",
+    y = "Fréquence",
+    title = "Un beau titre...")
+```
+
+--
+
+```{r echo=FALSE}
+ggplot(mtcars, aes(cyl)) +
+  geom_bar(width = 0.1) +
+  labs(
+    x = "Nombre de cylindres",
+    y = "Fréquence",
+    title = "Un beau titre...")
+```
+
+---
+class: middle, center, inverse
+
+# L'histogramme
+
+---
+
+Tracez l'histogramme de la variable `price`.
+
+--
+
+```{r eval=FALSE}
+qplot(diamonds$price, xlab="Prix", ylab="Fréquence", main="Un beau titre...")
+```
+
+--
+
+```{r echo=FALSE}
+qplot(diamonds$price, xlab="Prix", ylab="Fréquence", main="Un beau titre...")
+```
+
+---
+
+```{r eval=FALSE}
+ggplot(diamonds, aes(price)) +
+  geom_histogram(color = "white", binwidth = 1000, center = 500) +
+  labs(
+    x = "Prix", 
+    y = "Fréquence", 
+    title = "Un beau titre...")
+```
+
+--
+
+```{r echo=FALSE}
+ggplot(diamonds, aes(price)) +
+  geom_histogram(color = "white", binwidth = 1000, center = 500) +
+  labs(
+    x = "Prix", 
+    y = "Fréquence", 
+    title = "Un beau titre...")
+```
+
+---
+class: middle, center, inverse
+
+# Le polygone de fréquences
+
+---
+
+```{r eval=FALSE}
+ggplot(diamonds, aes(price)) +
+  geom_freqpoly(size = 1, binwidth = 1000, center = 500) +
+  labs(
+    x = "Prix", 
+    y = "Fréquence", 
+    title = "Un beau titre...")
+```
+
+--
+
+```{r echo=FALSE}
+ggplot(diamonds, aes(price)) +
+  geom_freqpoly(size = 1, binwidth = 1000, center = 500) +
+  labs(
+    x = "Prix", 
+    y = "Fréquence", 
+    title = "Un beau titre...")
+```
+
+---
+
+```{r eval=FALSE}
+ggplot(diamonds, aes(price)) +
+  geom_histogram(color = "white", binwidth = 1000, center = 500) +
+  geom_freqpoly(size = 1, binwidth = 1000, center = 500) +
+  labs(
+    x = "Prix", 
+    y = "Fréquence", 
+    title = "Un beau titre...")
+```
+
+--
+
+```{r echo=FALSE}
+ggplot(diamonds, aes(price)) +
+  geom_histogram(color = "white", binwidth = 1000, center = 500) +
+  geom_freqpoly(size = 1, binwidth = 1000, center = 500) +
+  labs(
+    x = "Prix", 
+    y = "Fréquence", 
+    title = "Un beau titre...")
+```
+
+---
+class: middle, center, inverse
+
+# L'ogive des pourcentages cumulés
+
+---
+
+```{r eval=FALSE}
+ggplot(diamonds, aes(price)) +
+  stat_ecdf() +
+  labs(
+    x = "Prix", 
+    y = "Fréquence relative cumulée", 
+    title = "Un beau titre...")
+```
+
+--
+
+```{r echo=FALSE}
+ggplot(diamonds, aes(price)) +
+  stat_ecdf() +
+  labs(
+    x = "Prix", 
+    y = "Fréquence relative cumulée", 
+    title = "Un beau titre...")
+```
+
+---
+class: middle, center, inverse
+
+# Représenter deux variables
+
+---
+
+```{r eval=FALSE}
+ggplot(diamonds, aes(x=cut, fill=color))+
+  geom_bar()+
+  labs(
+    x = "Coupe",
+    y = "Fréquence",
+    title = "Un beau titre...")
+```
+
+--
+
+```{r echo=FALSE}
+ggplot(diamonds, aes(x=cut, fill=color))+
+  geom_bar()+
+  labs(
+    x = "Coupe",
+    y = "Fréquence",
+    title = "Un beau titre...")
+```
+
+---
+
+```{r eval=FALSE}
+ggplot(diamonds, aes(x=cut, fill=color))+
+  geom_bar(position ="dodge")+
+  labs(
+    x = "Coupe",
+    y = "Fréquence",
+    title = "Un beau titre...")
+```
+
+--
+
+```{r echo=FALSE}
+ggplot(diamonds, aes(x=cut, fill=color))+
+  geom_bar(position ="dodge")+
+  labs(
+    x = "Coupe",
+    y = "Fréquence",
+    title = "Un beau titre...")
+```
+
+---
+
+```{r eval=FALSE}
+ggplot(diamonds, aes(x=cut, fill=color))+
+  geom_bar(position ="fill")+
+  labs(
+    x = "Coupe",
+    y = "Fréquence relative",
+    title = "Un beau titre...")
+```
+
+--
+
+```{r echo=FALSE}
+ggplot(diamonds, aes(x=cut, fill=color))+
+  geom_bar(position ="fill")+
+  labs(
+    x = "Coupe",
+    y = "Fréquence relative",
+    title = "Un beau titre...")
+```
+
+---
+
+```{r eval=FALSE}
+ggplot(diamonds, aes(x = cut, y = price)) + 
+  geom_boxplot()+
+  labs(
+    x = "Coupe",
+    y = "Prix",
+    title = "Un beau titre...")
+```
+
+--
+
+```{r echo=FALSE}
+ggplot(diamonds, aes(x = cut, y = price)) + 
+  geom_boxplot()+
+  labs(
+    x = "Coupe",
+    y = "Prix",
+    title = "Un beau titre...")
+```
+
+---
+
+```{r eval=FALSE}
+ggplot(diamonds, aes(x=carat, y=price))+
+  geom_point()+
+  labs(
+    x = "Carat",
+    y = "Prix",
+    title = "Un beau titre...")
+```
+
+--
+
+```{r echo=FALSE}
+ggplot(diamonds, aes(x=carat, y=price))+
+  geom_point()+
+  labs(
+    x = "Carat",
+    y = "Prix",
+    title = "Un beau titre...")
+```
+
+---
+class: center, middle, inverse
+
+# Régression linéaire
+
+---
+
+```{r eval=FALSE}
+ggplot(diamonds, aes(x=carat, y=price))+
+  geom_point()+
+  geom_smooth(method="lm")+
+  labs(
+    x = "Carat",
+    y = "Prix",
+    title = "Un beau titre...")
+```
+
+--
+
+```{r echo=FALSE}
+ggplot(diamonds, aes(x=carat, y=price))+
+  geom_point()+
+  geom_smooth(method="lm")+
+  labs(
+    x = "Carat",
+    y = "Prix",
+    title = "Un beau titre...")
+```
+
+---
+
+Nous pouvons trouver les coefficients $a$ et $b$ de la droite $y=ax+b$ en utilisant la commande `lm`.
+
+--
+
+```{r}
+lmfit <- lm(formula = price ~ carat, data = diamonds)
+```
+
+--
+
+```{r eval=FALSE}
+tidy(lmfit)
+```
+
+--
+
+```{r echo=FALSE}
+tidy(lmfit)
+```
+
+--
+
+```{r eval=FALSE}
+glance(lmfit)
+```
+
+--
+
+```{r echo=FALSE}
+glance(lmfit)
+```
+
+---
+
+```{r eval=FALSE}
+head(augment(lmfit))
+```
+
+--
+
+```{r echo=FALSE, warning=FALSE}
+head(augment(lmfit))
+```
+
+---
+class: middle, center, inverse
+
+# Intervalle de confiance
+
+---
+
+Nous allons trouver un intervalle de confiance au niveau de 95% de la moyenne du prix des diamants.
+
+--
+
+```{r eval=FALSE}
+tidy(t.test(diamonds$price,
+            conf.level = 0.95))
+```
+
+--
+
+```{r echo=FALSE}
+tidy(t.test(diamonds$price,
+            conf.level = 0.95))
+```
+
+--
+
+```{r eval=FALSE}
+tidy(t.test(diamonds$price,
+            conf.level = 0.99))
+```
+
+--
+
+```{r echo=FALSE}
+tidy(t.test(diamonds$price,
+            conf.level = 0.99))
+```
+
+---
+
+```{r eval=FALSE}
+tidy(prop.test(with(diamonds,table(cut!="Ideal"))))
+```
+
+--
+
+```{r echo=FALSE}
+tidy(prop.test(with(diamonds,table(cut!="Ideal"))))
+```
+
+
+--
+
+```{r eval=FALSE}
+tidy(prop.test(with(diamonds,table(cut!="Ideal")),
+                 conf.level = 0.99))
+```
+
+--
+
+```{r echo=FALSE}
+tidy(prop.test(with(diamonds,table(cut!="Ideal")),
+                 conf.level = 0.99))
+```

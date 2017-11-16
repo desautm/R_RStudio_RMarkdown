@@ -451,14 +451,14 @@ Pour visualiser les coefficients de votre régression linéaire, vous utilisez l
 tidy(lmfit)
 ```
 
-Pour obtenir les valeurs de la régression linéaire obtenues à partir des points originaux, vous utilisez la commande `augment`. La commande `head` n'est présente que pour visualiser les premières lignes de la sortie.
-```{r}
-head(augment(lmfit))
-```
-
 Pour obtenir les statistiques obtenues de la régression linéaire, nous utilisons la commande `glance`.
 ```{r}
 glance(lmfit)
+```
+
+Pour obtenir les valeurs de la régression linéaire obtenues à partir des points originaux, vous utilisez la commande `augment`. La commande `head` n'est présente que pour visualiser les premières lignes de la sortie.
+```{r}
+head(augment(lmfit))
 ```
 
 # Intervalle de confiance
