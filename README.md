@@ -4,4 +4,4 @@ Vous trouverez sur cette page le document `.Rmd` à télécharger pour la prése
 
 - Voici la [présentation](https://cdn.rawgit.com/desautm/R_RStudio_RMarkdown/1fb193b2/slides_presentation_r.html) utilisée aujourd'hui.
 
-- Voici le [document](presentation_r.Rmd) à télécharger.
+- Voici le [document](https://raw.githubusercontent.com/desautm/R_RStudio_RMarkdown/master/presentation_r.Rmd) à télécharger.
