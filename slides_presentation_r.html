@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Une introduction au langage R, RStudio et R Markdown</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Marc-André Désautels" />
+    <link href="libs/remark-css/example.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Une introduction au langage <code>R</code>, <code>RStudio</code> et <code>R Markdown</code>
+### Marc-André Désautels
+### Le 2017-11-16
+
+---
+
+
+
+
+# Introduction
+
+Le document sur lequel nous allons travailler est écrit en [R Markdown](http://rmarkdown.rstudio.com).
+
+--
+
+Lorsque vous insérez du code `R` à l'intérieur de ce document, les résultats sont ajoutés automatiquement au document produit.
+
+--
+
+Pour éxécuter un bloc de code, vous pouvez cliquer le bouton *Run* (il est représenté par une flèche verte pointant vers la droite) ou alors vous pouvez placer votre curseur dans le bloc et taper *Ctrl+Shift+Enter*.
+
+--
+
+![](images/RunCurrentChunkButton.png)
+
+---
+
+Éxécutez la commande suivante:
+
+
+```r
+plot(cars)
+```
+
+--
+
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Introduction
+
+Les documents en `R Markdown` se veulent être une solution pour faire de la [programmation lettrée](https://fr.wikipedia.org/wiki/Programmation_lettr%C3%A9e) et de la [recherche reproductible](https://en.wikipedia.org/wiki/Reproducibility#Reproducible_research).
+
+--
+
+Pour ajouter un nouveau bloc de code, vous appuyez sur le bouton *Insert* ou alors vous appuyez sur *Ctrl+Alt+I*.
+
+---
+
+# Introduction
+
+Les blocs suivants permettent d'installer de charger les librairies que nous utiliserons.
+
+
+```r
+list.of.packages &lt;- c("ggplot2", "broom", "MASS", "rmarkdown")
+new.packages &lt;- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+```
+
+
+```r
+library(ggplot2)
+library(broom)
+library(MASS)
+library(rmarkdown)
+```
+
+---
+
+class: center, middle, inverse
+
+# Utilisation des données
+
+---
+
+Lorsque des données sont intialisées dans `R`, vous pouvez les visualiser avec la commande `View`.
+
+
+```r
+View(mtcars)
+```
+
+--
+
+De plus, si les données sont des `tibbles` (un type précis de base de données), vous obtenez un résumé des données en tapant le nom.
+
+Nous allons observer la base de données `diamonds`.
+
+```r
+diamonds
+```
+
+--
+
+
+```
+## # A tibble: 53,940 x 10
+##    carat       cut color clarity depth table price     x     y     z
+##    &lt;dbl&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;ord&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1  0.23     Ideal     E     SI2  61.5    55   326  3.95  3.98  2.43
+##  2  0.21   Premium     E     SI1  59.8    61   326  3.89  3.84  2.31
+##  3  0.23      Good     E     VS1  56.9    65   327  4.05  4.07  2.31
+##  4  0.29   Premium     I     VS2  62.4    58   334  4.20  4.23  2.63
+##  5  0.31      Good     J     SI2  63.3    58   335  4.34  4.35  2.75
+##  6  0.24 Very Good     J    VVS2  62.8    57   336  3.94  3.96  2.48
+##  7  0.24 Very Good     I    VVS1  62.3    57   336  3.95  3.98  2.47
+##  8  0.26 Very Good     H     SI1  61.9    55   337  4.07  4.11  2.53
+##  9  0.22      Fair     E     VS2  65.1    61   337  3.87  3.78  2.49
+## 10  0.23 Very Good     H     VS1  59.4    61   338  4.00  4.05  2.39
+## # ... with 53,930 more rows
+```
+
+---
+
+Vous pouvez accéder à une variable en particulier en utilisant l'opérateur `$`. 
+
+--
+
+Pour ne pas encombrer l'écran, nous allons observer les 10 premières valeurs de la variable `cut`.
+
+
+```r
+diamonds$cut[1:10]
+```
+
+--
+
+
+```
+##  [1] Ideal     Premium   Good      Premium   Good      Very Good Very Good
+##  [8] Very Good Fair      Very Good
+## Levels: Fair &lt; Good &lt; Very Good &lt; Premium &lt; Ideal
+```
+
+---
+class: center, middle, inverse
+
+# Statistiques descriptives
+
+---
+layout: true
+
+## Mesures de tendance centrale
+### Le mode
+
+---
+
+Calculez le mode de la variable `cut`.
+
+```r
+table(diamonds$cut)
+```
+
+--
+
+
+```
+## 
+##      Fair      Good Very Good   Premium     Ideal 
+##      1610      4906     12082     13791     21551
+```
+
+Le mode est donc `Ideal`.
+
+---
+
+&gt; **Défi** :
+&gt; 
+&gt; Trouvez le mode de la variable `color`
+
+--
+
+
+```r
+table(diamonds$color)
+```
+
+--
+
+
+```
+## 
+##     D     E     F     G     H     I     J 
+##  6775  9797  9542 11292  8304  5422  2808
+```
+
+Le mode est donc `G`.
+
+---
+layout: false
+layout: true
+
+## Mesures de tendance centrale
+### La moyenne
+
+---
+
+Calculez la moyenne (`mean`) de la variable `cut`.
+
+--
+
+
+```r
+mean(diamonds$price)
+```
+
+--
+
+
+```
+## [1] 3932.8
+```
+
+La moyenne du prix des diamants est donc 3932.7997219$.
+
+---
+
+&gt; **Défi** :
+&gt; 
+&gt; Trouvez la moyenne de la variable `carat`
+
+--
+
+
+```r
+mean(diamonds$carat)
+```
+
+--
+
+
+```
+## [1] 0.7979397
+```
+
+La moyenne du nombre de carat des diamants est donc 0.7979397 carat.
+
+---
+layout: false
+layout: true
+
+## Mesures de tendance centrale
+### La médiane
+
+---
+
+Calculez la médiane (`median`) de la variable `price`.
+
+--
+
+
+```r
+median(diamonds$price)
+```
+
+--
+
+
+```
+## [1] 2401
+```
+
+Nous avons donc que 50% des diamants ont un prix inférieur ou égal à 2401$.
+
+---
+
+&gt; **Défi** :
+&gt; 
+&gt; Trouvez la médiane de la variable `carat`
+
+--
+
+
+```r
+median(diamonds$carat)
+```
+
+--
+
+
+```
+## [1] 0.7
+```
+
+Nous avons donc que 50% des diamants ont un nombre de carats inférieur ou égal à 0.7 carat.
+
+---
+layout: false
+layout: true
+
+## Mesures de dispersion
+### L'étendue
+
+---
+
+Calculez l'étendue (`range`) de la variable `carat`.
+
+--
+
+
+```r
+res &lt;- range(diamonds$carat)
+res
+res[2]-res[1]
+```
+
+--
+
+
+```
+## [1] 0.20 5.01
+```
+
+```
+## [1] 4.81
+```
+
+L'étendue du nombre de carat des diamants est donc 4.81 carats.
+
+---
+
+&gt; **Défi** :
+&gt; 
+&gt; Trouvez l'étendue de la variable `price`
+
+--
+
+
+```r
+res &lt;- range(diamonds$price)
+res
+res[2]-res[1]
+```
+
+--
+
+
+```
+## [1]   326 18823
+```
+
+```
+## [1] 18497
+```
+
+L'étendue du prix des diamants est donc de 18497$.
+
+---
+layout: false
+layout: true
+
+## Mesures de dispersion
+### La variance
+
+---
+
+Calculez la variance (`var`) de la variable `price`.
+
+--
+
+
+```r
+var(diamonds$price)
+```
+
+--
+
+
+```
+## [1] 15915629
+```
+
+La variance du prix des diamants est donc de `\(1.5915629\times 10^{7}\)` `\(\text{dollars}^2\)`.
+
+---
+
+&gt; **Défi** :
+&gt; 
+&gt; Trouvez la variance de la variable `carat`
+
+--
+
+
+```r
+var(diamonds$carat)
+```
+
+--
+
+
+```
+## [1] 0.2246867
+```
+
+La variance du nombre de carats des diamants est donc de 0.2246867 `\(\text{carat}^2\)`.
+
+---
+layout: false
+layout: true
+
+## Mesures de dispersion
+### L'écart-type
+
+---
+
+Calculez l'écart-type (`sd`) de la variable `carat`.
+
+--
+
+
+```r
+sd(diamonds$carat)
+```
+
+--
+
+
+```
+## [1] 0.4740112
+```
+
+L'écart-type du nombre de carat des diamants est 0.4740112 carat.
+
+---
+
+&gt; **Défi** :
+&gt; 
+&gt; Trouvez l'écart-type de la variable `price`
+
+--
+
+
+```r
+sd(diamonds$price)
+```
+
+--
+
+
+```
+## [1] 3989.44
+```
+
+L'écart-type du prix des diamants est 3989.4397381 $.
+
+---
+layout: false
+layout: true
+
+## Mesures de dispersion
+### Le coefficient de variation
+
+---
+
+Calculez le coefficient de variation de la variable `price`.
+
+--
+
+
+```r
+prix &lt;- diamonds$price
+sd(prix)/mean(prix)*100
+```
+
+--
+
+
+```
+## [1] 101.4402
+```
+
+--
+
+Le coefficient de variation du prix des diamants est donc de 101.4401958%.
+
+---
+
+&gt; **Défi** :
+&gt; 
+&gt; Trouvez le coefficient de variation de la variable `carat`
+
+--
+
+
+```r
+carat &lt;- diamonds$carat
+sd(carat)/mean(carat)*100
+```
+
+--
+
+
+```
+## [1] 59.40439
+```
+
+Le coefficient de variation du nombre de carat des diamants est donc de 59.4043906%.
+
+---
+layout: false
+layout: true
+
+## Mesures de position
+### La cote z
+
+---
+
+Calculez la cote z d'un diamant de prix 650$.
+
+--
+
+
+```r
+(650-mean(prix))/sd(prix)
+```
+
+--
+
+
+```
+## [1] -0.8228724
+```
+
+La cote z d'un diamant de 650$ est donc -0.8228724.
+
+---
+layout: false
+layout: true
+
+## Mesures de position
+### Les quantiles
+
+---
+
+Calculez certains quantiles (`quantile`) de la variable `carat`.
+
+--
+
+
+```r
+quantile(diamonds$carat, 0.1)
+quantile(diamonds$carat, 0.75)
+quantile(diamonds$carat, 0.91)
+```
+
+--
+
+
+```
+##  10% 
+## 0.31
+```
+
+```
+##  75% 
+## 1.04
+```
+
+```
+##  91% 
+## 1.51
+```
+
+---
+
+Utilisez la commande `summary` sur la variable `price`.
+
+--
+
+
+```r
+summary(diamonds$price)
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     326     950    2401    3933    5324   18823
+```
+
+---
+
+&gt; **Défi** :
+&gt; 
+&gt; Trouvez le sommaire de la variable `carat`
+
+--
+
+
+```r
+summary(diamonds$carat)
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.2000  0.4000  0.7000  0.7979  1.0400  5.0100
+```
+
+---
+layout: false
+layout: true
+
+## Mesures de position
+### Le rang centile
+
+---
+
+Calculez le rang centile d'un diamant valant 850$.
+
+--
+
+
+```r
+mean(diamonds$price&lt;=850)
+```
+
+```
+## [1] 0.2062291
+```
+
+Il y a donc 20.6229143% de diamants ayant un prix inférieur ou égal  à 850$.
+
+---
+layout: false
+class: center, middle, inverse
+
+# Les tableaux
+
+---
+layout: true
+
+## Tableaux à une variable
+
+---
+
+Nous pouvons créer un tableau à une variable à l'aide de la commande `table`.
+
+--
+
+Créez une table de la variable `cut` de la base de données `diamonds`.
+
+--
+
+
+```r
+table(diamonds$cut)
+```
+
+--
+
+
+```
+## 
+##      Fair      Good Very Good   Premium     Ideal 
+##      1610      4906     12082     13791     21551
+```
+
+---
+
+&gt; **Défi** :
+&gt; 
+&gt; Faites un tableau de la variable `color`
+
+--
+
+
+```r
+table(diamonds$color)
+```
+
+--
+
+
+```
+## 
+##     D     E     F     G     H     I     J 
+##  6775  9797  9542 11292  8304  5422  2808
+```
+
+---
+
+Nous pouvons ajouter le total à une table en utilisant la commande `adddmargins`.
+
+--
+
+
+```r
+addmargins(table(diamonds$cut))
+```
+
+--
+
+
+```
+## 
+##      Fair      Good Very Good   Premium     Ideal       Sum 
+##      1610      4906     12082     13791     21551     53940
+```
+
+---
+layout: false
+layout: true
+
+## Tableaux à deux variables
+
+---
+
+Nous pouvons aussi créer des tableaux à deux variables avec la commande `table`.
+
+--
+
+Créez un tableau avec les variables  `cut` et `color` de la base de données `diamonds`.
+
+--
+
+
+```r
+table(diamonds$cut,diamonds$color)
+```
+
+--
+
+
+```
+##            
+##                D    E    F    G    H    I    J
+##   Fair       163  224  312  314  303  175  119
+##   Good       662  933  909  871  702  522  307
+##   Very Good 1513 2400 2164 2299 1824 1204  678
+##   Premium   1603 2337 2331 2924 2360 1428  808
+##   Ideal     2834 3903 3826 4884 3115 2093  896
+```
+
+---
+
+Vous pouvez également représentez votre tableau en utilisant des proportions avec la commande `prop.table`.
+
+--
+
+
+```r
+prop.table(table(diamonds$cut,diamonds$color))
+```
+
+--
+
+
+```
+##            
+##                       D           E           F           G           H
+##   Fair      0.003021876 0.004152762 0.005784205 0.005821283 0.005617353
+##   Good      0.012272896 0.017296997 0.016852058 0.016147571 0.013014461
+##   Very Good 0.028049685 0.044493882 0.040118650 0.042621431 0.033815350
+##   Premium   0.029718205 0.043325918 0.043214683 0.054208380 0.043752317
+##   Ideal     0.052539859 0.072358176 0.070930664 0.090545050 0.057749351
+##            
+##                       I           J
+##   Fair      0.003244346 0.002206155
+##   Good      0.009677419 0.005691509
+##   Very Good 0.022321098 0.012569522
+##   Premium   0.026473860 0.014979607
+##   Ideal     0.038802373 0.016611049
+```
+
+---
+
+Vous pouvez ajouter une ligne et une colonne de **totaux** avec des fréquences.
+
+--
+
+
+```r
+addmargins(table(diamonds$cut,diamonds$color))
+```
+
+--
+
+
+```
+##            
+##                 D     E     F     G     H     I     J   Sum
+##   Fair        163   224   312   314   303   175   119  1610
+##   Good        662   933   909   871   702   522   307  4906
+##   Very Good  1513  2400  2164  2299  1824  1204   678 12082
+##   Premium    1603  2337  2331  2924  2360  1428   808 13791
+##   Ideal      2834  3903  3826  4884  3115  2093   896 21551
+##   Sum        6775  9797  9542 11292  8304  5422  2808 53940
+```
+
+---
+
+Vous pouvez ajouter une ligne et une colonne de **totaux** avec des fréquences relatives.
+
+--
+
+
+```r
+addmargins(prop.table(table(diamonds$cut,diamonds$color)))
+```
+
+--
+
+
+```
+##            
+##                       D           E           F           G           H
+##   Fair      0.003021876 0.004152762 0.005784205 0.005821283 0.005617353
+##   Good      0.012272896 0.017296997 0.016852058 0.016147571 0.013014461
+##   Very Good 0.028049685 0.044493882 0.040118650 0.042621431 0.033815350
+##   Premium   0.029718205 0.043325918 0.043214683 0.054208380 0.043752317
+##   Ideal     0.052539859 0.072358176 0.070930664 0.090545050 0.057749351
+##   Sum       0.125602521 0.181627735 0.176900260 0.209343715 0.153948832
+##            
+##                       I           J         Sum
+##   Fair      0.003244346 0.002206155 0.029847979
+##   Good      0.009677419 0.005691509 0.090952911
+##   Very Good 0.022321098 0.012569522 0.223989618
+##   Premium   0.026473860 0.014979607 0.255672970
+##   Ideal     0.038802373 0.016611049 0.399536522
+##   Sum       0.100519095 0.052057842 1.000000000
+```
+
+---
+layout: false
+class: middle, center, inverse
+
+# Graphiques
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {window.dispatchEvent(new Event('resize'));});
+(function() {var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler"); if (!r) return; s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }"; d.head.appendChild(s);})();</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
