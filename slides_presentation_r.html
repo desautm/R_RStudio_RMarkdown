@@ -1322,6 +1322,57 @@ tidy(prop.test(with(diamonds,table(cut!="Ideal")),
 ##                                                 method alternative
 ## 1 1-sample proportions test with continuity correction   two.sided
 ```
+
+---
+class: middle, center, inverse
+
+# Les tests d'hypothèses
+
+---
+
+
+```r
+PrixDiff &lt;- t.test(diamonds$price, 
+            mu = 3900,
+            alternative = "two.sided",
+            paired = FALSE, 
+            var.equal = FALSE, 
+            conf.level = 0.95)
+tidy(PrixDiff)
+```
+
+--
+
+
+```
+##   estimate statistic    p.value parameter conf.low conf.high
+## 1   3932.8  1.909474 0.05620629     53939 3899.132  3966.467
+##              method alternative
+## 1 One Sample t-test   two.sided
+```
+
+--
+
+
+```r
+PrixPlusGrand &lt;- t.test(diamonds$price, 
+                  mu = 3900,
+                  alternative = "greater",
+                  paired = FALSE, 
+                  var.equal = FALSE, 
+                  conf.level = 0.90)
+tidy(PrixPlusGrand)
+```
+
+--
+
+
+```
+##   estimate statistic    p.value parameter conf.low conf.high
+## 1   3932.8  1.909474 0.02810314     53939 3910.786       Inf
+##              method alternative
+## 1 One Sample t-test     greater
+```
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({

@@ -1201,3 +1201,56 @@ tidy(prop.test(with(diamonds,table(cut!="Ideal")),
 tidy(prop.test(with(diamonds,table(cut!="Ideal")),
                  conf.level = 0.99))
 ```
+
+---
+class: middle, center, inverse
+
+# Les tests d'hypothèses
+
+---
+
+```{r eval=FALSE}
+PrixDiff <- t.test(diamonds$price, 
+            mu = 3900,
+            alternative = "two.sided",
+            paired = FALSE, 
+            var.equal = FALSE, 
+            conf.level = 0.95)
+tidy(PrixDiff)
+```
+
+--
+
+```{r echo=FALSE}
+PrixDiff <- t.test(diamonds$price, 
+            mu = 3900,
+            alternative = "two.sided",
+            paired = FALSE, 
+            var.equal = FALSE, 
+            conf.level = 0.95)
+tidy(PrixDiff)
+```
+
+--
+
+```{r eval=FALSE}
+PrixPlusGrand <- t.test(diamonds$price, 
+                  mu = 3900,
+                  alternative = "greater",
+                  paired = FALSE, 
+                  var.equal = FALSE, 
+                  conf.level = 0.90)
+tidy(PrixPlusGrand)
+```
+
+--
+
+```{r echo=FALSE}
+PrixPlusGrand <- t.test(diamonds$price, 
+                  mu = 3900,
+                  alternative = "greater",
+                  paired = FALSE, 
+                  var.equal = FALSE, 
+                  conf.level = 0.90)
+tidy(PrixPlusGrand)
+```

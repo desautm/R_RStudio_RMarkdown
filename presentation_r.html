@@ -657,6 +657,12 @@ sd(carat)/mean(carat)*100</code></pre>
 <pre><code>##          term  estimate std.error statistic p.value
 ## 1 (Intercept) -2256.361  13.05535 -172.8304       0
 ## 2       carat  7756.426  14.06658  551.4081       0</code></pre>
+<p>Pour obtenir les statistiques obtenues de la régression linéaire, nous utilisons la commande <code>glance</code>.</p>
+<pre class="r"><code>glance(lmfit)</code></pre>
+<pre><code>##   r.squared adj.r.squared    sigma statistic p.value df    logLik      AIC
+## 1 0.8493305     0.8493277 1548.562  304050.9       0  2 -472730.3 945466.5
+##        BIC     deviance df.residual
+## 1 945493.2 129345695398       53938</code></pre>
 <p>Pour obtenir les valeurs de la régression linéaire obtenues à partir des points originaux, vous utilisez la commande <code>augment</code>. La commande <code>head</code> n’est présente que pour visualiser les premières lignes de la sortie.</p>
 <pre class="r"><code>head(augment(lmfit))</code></pre>
 <pre><code>## Warning: Deprecated: please use `purrr::possibly()` instead</code></pre>
@@ -678,12 +684,6 @@ sd(carat)/mean(carat)*100</code></pre>
 ## 4 9.656791e-07  0.2202069
 ## 5 2.780364e-07  0.1206747
 ## 6 4.925361e-06  0.4719441</code></pre>
-<p>Pour obtenir les statistiques obtenues de la régression linéaire, nous utilisons la commande <code>glance</code>.</p>
-<pre class="r"><code>glance(lmfit)</code></pre>
-<pre><code>##   r.squared adj.r.squared    sigma statistic p.value df    logLik      AIC
-## 1 0.8493305     0.8493277 1548.562  304050.9       0  2 -472730.3 945466.5
-##        BIC     deviance df.residual
-## 1 945493.2 129345695398       53938</code></pre>
 </div>
 <div id="intervalle-de-confiance" class="section level1">
 <h1>Intervalle de confiance</h1>

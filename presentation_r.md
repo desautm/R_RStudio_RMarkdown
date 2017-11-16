@@ -755,6 +755,19 @@ tidy(lmfit)
 ## 2       carat  7756.426  14.06658  551.4081       0
 ```
 
+Pour obtenir les statistiques obtenues de la régression linéaire, nous utilisons la commande `glance`.
+
+```r
+glance(lmfit)
+```
+
+```
+##   r.squared adj.r.squared    sigma statistic p.value df    logLik      AIC
+## 1 0.8493305     0.8493277 1548.562  304050.9       0  2 -472730.3 945466.5
+##        BIC     deviance df.residual
+## 1 945493.2 129345695398       53938
+```
+
 Pour obtenir les valeurs de la régression linéaire obtenues à partir des points originaux, vous utilisez la commande `augment`. La commande `head` n'est présente que pour visualiser les premières lignes de la sortie.
 
 ```r
@@ -796,19 +809,6 @@ head(augment(lmfit))
 ## 4 9.656791e-07  0.2202069
 ## 5 2.780364e-07  0.1206747
 ## 6 4.925361e-06  0.4719441
-```
-
-Pour obtenir les statistiques obtenues de la régression linéaire, nous utilisons la commande `glance`.
-
-```r
-glance(lmfit)
-```
-
-```
-##   r.squared adj.r.squared    sigma statistic p.value df    logLik      AIC
-## 1 0.8493305     0.8493277 1548.562  304050.9       0  2 -472730.3 945466.5
-##        BIC     deviance df.residual
-## 1 945493.2 129345695398       53938
 ```
 
 # Intervalle de confiance
