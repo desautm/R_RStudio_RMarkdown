@@ -38,9 +38,9 @@ class: middle
 
 ---
 
-### Vous devez écrire votre nom en remplacant le texte **"ECRIVEZ VOTRE NOM ICI"**
+### Vous devez écrire votre nom en remplacant le texte **"ECRIVEZ VOTRE NOM ICI"**.
 
-### __Faites attention de conserver les guillemets__
+### __Faites attention de conserver les guillemets__.
 
 ![](images/EcrivezNomIci.png)
 
@@ -869,6 +869,19 @@ layout: false
 class: middle, center, inverse
 
 # Graphiques
+
+En langage `R`, il existe plusieurs façons de faire des graphiques.
+
+- Les graphiques de `base` ou `traditionnels`.
+- La librairie `lattice` qui est incluse dans `R` mais que nous devons charger.
+- La librairie `ggplot2` qui doit être installé **et** chargée.
+
+Pour cet atelier, nous utiliserons la librairie [`ggplot2`](http://ggplot2.org/) qui est la plus utilisée pour produire des graphiques en `R`.
+
+Dans la librairie `ggplot2`, il y a deux façons de produire des graphiques:
+
+- La commande `qplot`, qui correspond à __quick plot__. Cette commande produit des graphiques rapidement en tentant de choisir le bon graphique en fonction des variables utilisées.
+- La commande `ggplot`, qui permet d'avoir beaucoup plus de précision sur la sortie graphique.
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
