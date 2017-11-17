@@ -218,7 +218,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Une introduction au langage <code>R</code>, <code>RStudio</code> et <code>R Markdown</code></h1>
 <h4 class="author"><em>ECRIVEZ VOTRE NOM ICI</em></h4>
-<h4 class="date"><em>Le 2017-11-16</em></h4>
+<h4 class="date"><em>Le 2017-11-17</em></h4>
 
 </div>
 
@@ -282,10 +282,6 @@ library(rmarkdown)</code></pre>
 <p><strong>Défi</strong> :</p>
 <p>Trouvez le mode de la variable <code>color</code></p>
 </blockquote>
-<pre class="r"><code>table(diamonds$color)</code></pre>
-<pre><code>## 
-##     D     E     F     G     H     I     J 
-##  6775  9797  9542 11292  8304  5422  2808</code></pre>
 </div>
 <div id="la-moyenne" class="section level3">
 <h3>La moyenne</h3>
@@ -296,8 +292,6 @@ library(rmarkdown)</code></pre>
 <p><strong>Défi</strong> :</p>
 <p>Trouvez la moyenne de la variable <code>carat</code></p>
 </blockquote>
-<pre class="r"><code>mean(diamonds$carat)</code></pre>
-<pre><code>## [1] 0.7979397</code></pre>
 </div>
 <div id="la-mediane" class="section level3">
 <h3>La médiane</h3>
@@ -308,8 +302,6 @@ library(rmarkdown)</code></pre>
 <p><strong>Défi</strong> :</p>
 <p>Trouvez la médiane de la variable <code>carat</code></p>
 </blockquote>
-<pre class="r"><code>median(diamonds$carat)</code></pre>
-<pre><code>## [1] 0.7</code></pre>
 </div>
 </div>
 <div id="mesures-de-dispersion" class="section level2">
@@ -326,11 +318,6 @@ res</code></pre>
 <p><strong>Défi</strong> :</p>
 <p>Trouvez l’étendue de la variable <code>price</code></p>
 </blockquote>
-<pre class="r"><code>res &lt;- range(diamonds$price)
-res</code></pre>
-<pre><code>## [1]   326 18823</code></pre>
-<pre class="r"><code>res[2]-res[1]</code></pre>
-<pre><code>## [1] 18497</code></pre>
 </div>
 <div id="la-variance" class="section level3">
 <h3>La variance</h3>
@@ -341,8 +328,6 @@ res</code></pre>
 <p><strong>Défi</strong> :</p>
 <p>Trouvez la variance de la variable <code>carat</code></p>
 </blockquote>
-<pre class="r"><code>var(diamonds$carat)</code></pre>
-<pre><code>## [1] 0.2246867</code></pre>
 </div>
 <div id="lecart-type" class="section level3">
 <h3>L’écart-type</h3>
@@ -353,8 +338,6 @@ res</code></pre>
 <p><strong>Défi</strong> :</p>
 <p>Trouvez l’écart-type de la variable <code>price</code></p>
 </blockquote>
-<pre class="r"><code>sd(diamonds$price)</code></pre>
-<pre><code>## [1] 3989.44</code></pre>
 </div>
 <div id="le-coefficient-de-variation" class="section level3">
 <h3>Le coefficient de variation</h3>
@@ -362,13 +345,6 @@ res</code></pre>
 <pre class="r"><code>prix &lt;- diamonds$price
 sd(prix)/mean(prix)*100</code></pre>
 <pre><code>## [1] 101.4402</code></pre>
-<blockquote>
-<p><strong>Défi</strong> :</p>
-<p>Trouvez le coefficient de variation de la variable <code>carat</code></p>
-</blockquote>
-<pre class="r"><code>carat &lt;- diamonds$carat
-sd(carat)/mean(carat)*100</code></pre>
-<pre><code>## [1] 59.40439</code></pre>
 </div>
 </div>
 <div id="mesures-de-position" class="section level2">
@@ -399,9 +375,6 @@ sd(carat)/mean(carat)*100</code></pre>
 <p><strong>Défi</strong> :</p>
 <p>Trouvez le sommaire de la variable <code>carat</code></p>
 </blockquote>
-<pre class="r"><code>summary(diamonds$carat)</code></pre>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2000  0.4000  0.7000  0.7979  1.0400  5.0100</code></pre>
 </div>
 <div id="le-rang-centile" class="section level3">
 <h3>Le rang centile</h3>
@@ -424,10 +397,6 @@ sd(carat)/mean(carat)*100</code></pre>
 <p><strong>Défi</strong> :</p>
 <p>Faites un tableau de la variable <code>color</code></p>
 </blockquote>
-<pre class="r"><code>table(diamonds$color)</code></pre>
-<pre><code>## 
-##     D     E     F     G     H     I     J 
-##  6775  9797  9542 11292  8304  5422  2808</code></pre>
 <p>Nous pouvons ajouter le total à une table en utilisant la commande <code>adddmargins</code>.</p>
 <pre class="r"><code>addmargins(table(diamonds$cut))</code></pre>
 <pre><code>## 
@@ -689,9 +658,6 @@ sd(carat)/mean(carat)*100</code></pre>
 <h1>Intervalle de confiance</h1>
 <div id="les-intervalles-de-confiance-sur-une-moyenne" class="section level2">
 <h2>Les intervalles de confiance sur une moyenne</h2>
-<p>Trouvons la moyenne du prix des diamants.</p>
-<pre class="r"><code>mean(diamonds$price)</code></pre>
-<pre><code>## [1] 3932.8</code></pre>
 <p>Nous allons trouver un intervalle de confiance au niveau de 95% de la moyenne du prix des diamants.</p>
 <pre class="r"><code>tidy(t.test(diamonds$price,
             conf.level = 0.95))</code></pre>
@@ -841,7 +807,7 @@ tidy(PropPremiumE)</code></pre>
 <pre><code>## 
 ##      Fair      Good Very Good   Premium     Ideal 
 ##      1610      4906     12082     13791     21551</code></pre>
-<p>Nous voulons faire un test du <span class="math inline">\(\chi^2\)</span> pour savoir si toutes les modalités de la variable sont présentes de façon égales.</p>
+<p>Nous voulons faire un test du <span class="math inline">\(\chi^2\)</span> pour savoir si toutes les modalités de la variable <code>cut</code> sont présentes de façon égales.</p>
 <pre class="r"><code>ChiCut &lt;- chisq.test(x = table(diamonds$cut))
 tidy(ChiCut)</code></pre>
 <pre><code>##   statistic p.value parameter                                   method

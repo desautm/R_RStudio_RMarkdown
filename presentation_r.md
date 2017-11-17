@@ -1,7 +1,7 @@
 ---
 title: "Une introduction au langage `R`, `RStudio` et `R Markdown`"
 author: "ECRIVEZ VOTRE NOM ICI"
-date: "Le 2017-11-16"
+date: "Le 2017-11-17"
 output:
   html_document:
     keep_md: true
@@ -117,17 +117,6 @@ table(diamonds$cut)
 > 
 > Trouvez le mode de la variable `color`
 
-
-```r
-table(diamonds$color)
-```
-
-```
-## 
-##     D     E     F     G     H     I     J 
-##  6775  9797  9542 11292  8304  5422  2808
-```
-
 ### La moyenne
 
 Calculez la moyenne (`mean`) de la variable `cut`.
@@ -144,15 +133,6 @@ mean(diamonds$price)
 > 
 > Trouvez la moyenne de la variable `carat`
 
-
-```r
-mean(diamonds$carat)
-```
-
-```
-## [1] 0.7979397
-```
-
 ### La médiane
 
 Calculez la médiane (`median`) de la variable `price`.
@@ -168,15 +148,6 @@ median(diamonds$price)
 > **Défi** :
 > 
 > Trouvez la médiane de la variable `carat`
-
-
-```r
-median(diamonds$carat)
-```
-
-```
-## [1] 0.7
-```
 
 ## Mesures de dispersion
 
@@ -205,24 +176,6 @@ res[2]-res[1]
 > 
 > Trouvez l'étendue de la variable `price`
 
-
-```r
-res <- range(diamonds$price)
-res
-```
-
-```
-## [1]   326 18823
-```
-
-```r
-res[2]-res[1]
-```
-
-```
-## [1] 18497
-```
-
 ### La variance
 
 Calculez la variance (`var`) de la variable `price`.
@@ -238,15 +191,6 @@ var(diamonds$price)
 > **Défi** :
 > 
 > Trouvez la variance de la variable `carat`
-
-
-```r
-var(diamonds$carat)
-```
-
-```
-## [1] 0.2246867
-```
 
 ### L'écart-type
 
@@ -264,15 +208,6 @@ sd(diamonds$carat)
 > 
 > Trouvez l'écart-type de la variable `price`
 
-
-```r
-sd(diamonds$price)
-```
-
-```
-## [1] 3989.44
-```
-
 ### Le coefficient de variation
 
 Calculez le coefficient de variation de la variable `price`.
@@ -284,20 +219,6 @@ sd(prix)/mean(prix)*100
 
 ```
 ## [1] 101.4402
-```
-
-> **Défi** :
-> 
-> Trouvez le coefficient de variation de la variable `carat`
-
-
-```r
-carat <- diamonds$carat
-sd(carat)/mean(carat)*100
-```
-
-```
-## [1] 59.40439
 ```
 
 ## Mesures de position
@@ -360,16 +281,6 @@ summary(diamonds$price)
 > 
 > Trouvez le sommaire de la variable `carat`
 
-
-```r
-summary(diamonds$carat)
-```
-
-```
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2000  0.4000  0.7000  0.7979  1.0400  5.0100
-```
-
 ### Le rang centile
 
 Calculez le rang centile d'un diamant valant 850$.
@@ -401,17 +312,6 @@ table(diamonds$cut)
 > **Défi** :
 > 
 > Faites un tableau de la variable `color`
-
-
-```r
-table(diamonds$color)
-```
-
-```
-## 
-##     D     E     F     G     H     I     J 
-##  6775  9797  9542 11292  8304  5422  2808
-```
 
 Nous pouvons ajouter le total à une table en utilisant la commande `adddmargins`.
 
@@ -533,7 +433,7 @@ Tracez le diagramme à bandes de la variable `clarity`.
 qplot(diamonds$clarity, xlab="Clarté", ylab="Fréquence", main="Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-33-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-24-1.png)<!-- -->
 
 En utilisant `ggplot`.
 
@@ -546,7 +446,7 @@ ggplot(diamonds, aes(clarity)) +
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-34-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-25-1.png)<!-- -->
 
 ## Les variables quantitatives
 
@@ -562,7 +462,7 @@ qplot(mtcars$cyl, xlab="Nombre de cylindres", ylab="Fréquence", main="Un beau t
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-35-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-26-1.png)<!-- -->
 
 En utilisant `ggplot`.
 
@@ -575,7 +475,7 @@ ggplot(mtcars, aes(cyl)) +
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-36-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-27-1.png)<!-- -->
 
 ### L'histogramme
 
@@ -589,7 +489,7 @@ qplot(diamonds$price, xlab="Prix", ylab="Fréquence", main="Un beau titre...")
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-37-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-28-1.png)<!-- -->
 
 En utilisant `ggplot`.
 
@@ -602,7 +502,7 @@ ggplot(diamonds, aes(price)) +
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-38-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-29-1.png)<!-- -->
 
 ### Le polygone de fréquences
 
@@ -617,7 +517,7 @@ ggplot(diamonds, aes(price)) +
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-39-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-30-1.png)<!-- -->
 
 Tracez l'histogramme et le polygone de fréquences superposés.
 
@@ -631,7 +531,7 @@ ggplot(diamonds, aes(price)) +
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-40-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-31-1.png)<!-- -->
 
 ### L'ogive des pourcentages cumulés
 
@@ -646,7 +546,7 @@ ggplot(diamonds, aes(price)) +
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-41-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-32-1.png)<!-- -->
 
 ## Représenter deux variables
 
@@ -663,7 +563,7 @@ ggplot(diamonds, aes(x=cut, fill=color))+
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-42-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-33-1.png)<!-- -->
 
 Tracez un diagramme à bandes comprenant la variable `cut` et la variable `color` avec les variables côtes à côtes. On utilise l'option `position="dodge"`.
 
@@ -676,7 +576,7 @@ ggplot(diamonds, aes(x=cut, fill=color))+
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-43-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-34-1.png)<!-- -->
 
 Tracez un diagramme à bandes comprenant la variable `cut` et la variable `color` avec des fréquences relatives. On utilise l'option `position="fill"`.
 
@@ -689,7 +589,7 @@ ggplot(diamonds, aes(x=cut, fill=color))+
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-44-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-35-1.png)<!-- -->
 
 ### Une variable qualitative et une variable quantitative
 
@@ -704,7 +604,7 @@ ggplot(diamonds, aes(x = cut, y = price)) +
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-45-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-36-1.png)<!-- -->
 
 ### Deux variables quantitatives
 
@@ -719,7 +619,7 @@ ggplot(diamonds, aes(x=carat, y=price))+
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-46-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-37-1.png)<!-- -->
 
 # Régression linéaire
 
@@ -735,7 +635,7 @@ ggplot(diamonds, aes(x=carat, y=price))+
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-47-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-38-1.png)<!-- -->
 
 Nous pouvons trouver les coefficients $a$ et $b$ de la droite $y=ax+b$ en utilisant la commande `lm`.
 
@@ -814,16 +714,6 @@ head(augment(lmfit))
 # Intervalle de confiance
 
 ## Les intervalles de confiance sur une moyenne
-
-Trouvons la moyenne du prix des diamants.
-
-```r
-mean(diamonds$price)
-```
-
-```
-## [1] 3932.8
-```
 
 Nous allons trouver un intervalle de confiance au niveau de 95% de la moyenne du prix des diamants.
 
@@ -1055,7 +945,7 @@ table(diamonds$cut)
 ##      1610      4906     12082     13791     21551
 ```
 
-Nous voulons faire un test du $\chi^2$ pour savoir si toutes les modalités de la variable sont présentes de façon égales.
+Nous voulons faire un test du $\chi^2$ pour savoir si toutes les modalités de la variable `cut` sont présentes de façon égales.
 
 ```r
 ChiCut <- chisq.test(x = table(diamonds$cut))
@@ -1134,4 +1024,3 @@ sessionInfo()
 ## [33] assertthat_0.2.0 mnormt_1.5-5     colorspace_1.3-2 labeling_0.3    
 ## [37] stringi_1.1.5    lazyeval_0.2.1   munsell_0.4.3
 ```
-

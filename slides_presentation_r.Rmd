@@ -97,7 +97,7 @@ Pour ajouter un nouveau bloc de code, vous appuyez sur le bouton *Insert* ou alo
 Les blocs suivants permettent d'installer de charger les librairies que nous utiliserons.
 
 ```{r}
-list.of.packages <- c("ggplot2", "broom", "MASS", "rmarkdown")
+list.of.packages <- c("ggplot2", "broom", "MASS", "rmarkdown", "knitr")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 ```
@@ -463,28 +463,6 @@ sd(prix)/mean(prix)*100
 --
 
 Le coefficient de variation du prix des diamants est donc de `r sd(prix)/mean(prix)*100`%.
-
----
-
-> **Défi** :
-> 
-> Trouvez le coefficient de variation de la variable `carat`
-
---
-
-```{r eval=FALSE}
-carat <- diamonds$carat
-sd(carat)/mean(carat)*100
-```
-
---
-
-```{r echo=FALSE}
-carat <- diamonds$carat
-sd(carat)/mean(carat)*100
-```
-
-Le coefficient de variation du nombre de carat des diamants est donc de `r sd(carat)/mean(carat)*100`%.
 
 ---
 layout: false
@@ -1111,7 +1089,7 @@ tidy(lmfit)
 --
 
 ```{r echo=FALSE}
-tidy(lmfit)
+knitr::kable(tidy(lmfit), format = "html")
 ```
 
 --
@@ -1123,10 +1101,12 @@ glance(lmfit)
 --
 
 ```{r echo=FALSE}
-glance(lmfit)
+knitr::kable(glance(lmfit), format = "html")
 ```
 
 ---
+
+Pour obtenir les valeurs de la régression linéaire obtenues à partir des points originaux, vous utilisez la commande `augment`. La commande `head` n'est présente que pour visualiser les premières lignes de la sortie.
 
 ```{r eval=FALSE}
 head(augment(lmfit))
@@ -1135,7 +1115,7 @@ head(augment(lmfit))
 --
 
 ```{r echo=FALSE, warning=FALSE}
-head(augment(lmfit))
+knitr::kable(head(augment(lmfit)), format = "html")
 ```
 
 ---
@@ -1157,11 +1137,13 @@ tidy(t.test(diamonds$price,
 --
 
 ```{r echo=FALSE}
-tidy(t.test(diamonds$price,
-            conf.level = 0.95))
+knitr::kable(tidy(t.test(diamonds$price,
+            conf.level = 0.95)), format = "html")
 ```
 
 --
+
+Au niveau de confiance de 99%.
 
 ```{r eval=FALSE}
 tidy(t.test(diamonds$price,
@@ -1171,12 +1153,14 @@ tidy(t.test(diamonds$price,
 --
 
 ```{r echo=FALSE}
-tidy(t.test(diamonds$price,
-            conf.level = 0.99))
+knitr::kable(tidy(t.test(diamonds$price,
+            conf.level = 0.99)), format = "html")
 ```
 
 ---
 
+Nous allons faire trouver un intervalle de confiance au niveau de 95% de la proportion dans la population des diamants de type `Ideal`.
+
 ```{r eval=FALSE}
 tidy(prop.test(with(diamonds,table(cut!="Ideal"))))
 ```
@@ -1184,11 +1168,13 @@ tidy(prop.test(with(diamonds,table(cut!="Ideal"))))
 --
 
 ```{r echo=FALSE}
-tidy(prop.test(with(diamonds,table(cut!="Ideal"))))
+knitr::kable(tidy(prop.test(with(diamonds,table(cut!="Ideal")))), format = "html")
 ```
 
 
 --
+
+Au niveau de confiance de 99%.
 
 ```{r eval=FALSE}
 tidy(prop.test(with(diamonds,table(cut!="Ideal")),
@@ -1198,17 +1184,20 @@ tidy(prop.test(with(diamonds,table(cut!="Ideal")),
 --
 
 ```{r echo=FALSE}
-tidy(prop.test(with(diamonds,table(cut!="Ideal")),
-                 conf.level = 0.99))
+knitr::kable(tidy(prop.test(with(diamonds,table(cut!="Ideal")),
+                 conf.level = 0.99)), format = "html")
 ```
 
 ---
 class: middle, center, inverse
 
 # Les tests d'hypothèses
+### Les test d'hypothèses sur une moyenne
 
 ---
 
+Par exemple, nous allons tenter de vérifier si le prix des diamants est **différent** de 3 900$.
+
 ```{r eval=FALSE}
 PrixDiff <- t.test(diamonds$price, 
             mu = 3900,
@@ -1228,10 +1217,12 @@ PrixDiff <- t.test(diamonds$price,
             paired = FALSE, 
             var.equal = FALSE, 
             conf.level = 0.95)
-tidy(PrixDiff)
+knitr::kable(tidy(PrixDiff), format = "html")
 ```
 
---
+---
+
+Nous pouvons vérifier si le prix des diamants est **plus grand** que 3 900$ au niveau de confiance de 90%.
 
 ```{r eval=FALSE}
 PrixPlusGrand <- t.test(diamonds$price, 
@@ -1252,5 +1243,161 @@ PrixPlusGrand <- t.test(diamonds$price,
                   paired = FALSE, 
                   var.equal = FALSE, 
                   conf.level = 0.90)
-tidy(PrixPlusGrand)
+knitr::kable(tidy(PrixPlusGrand), format = "html")
+```
+
+---
+class: middle, center, inverse
+
+# Les tests d'hypothèses
+### Les test d'hypothèses sur une proportion
+
+---
+
+Nous pouvons faire un test d'hypothèses unilatéral de niveau de confiance 95% sur la proportion de diamants de type `Ideal`. Par exemple, nous allons tenter de vérifier si la proportion des diamants de type `Ideal` est **plus petite** que 0,405.
+
+```{r eval=FALSE}
+IdealPlusPetit <- prop.test(with(diamonds,table(cut!="Ideal")),
+                    p = 0.405,
+                    alternative = "less",
+                    conf.level = 0.95)
+tidy(IdealPlusPetit)
+```
+
+--
+
+```{r echo=FALSE}
+IdealPlusPetit <- prop.test(with(diamonds,table(cut!="Ideal")),
+                    p = 0.405,
+                    alternative = "less",
+                    conf.level = 0.95)
+knitr::kable(tidy(IdealPlusPetit), format = "html")
+```
+
+---
+class: middle, center, inverse
+
+# Les tests d'hypothèses
+### Les test d'hypothèses sur une différence de moyennes
+#### Échantillons indépendants
+
+---
+
+Nous pouvons faire un test d'hypothèses sur la différence entre le prix moyen des diamants de coupe `Ideal` et de coupe `Premium` au niveau de confiance  de 99%.
+
+```{r eval=FALSE}
+IdealPremiumDiff <- t.test(formula = price ~ cut,
+                      data = diamonds,
+                      subset = cut %in% c("Ideal", "Premium"),
+                      alternative = "two.sided",
+                      paired = FALSE,
+                      var.equal = FALSE,
+                      conf.level = 0.99)
+tidy(IdealPremiumDiff)
+```
+
+--
+
+```{r echo=FALSE}
+IdealPremiumDiff <- t.test(formula = price ~ cut,
+                      data = diamonds,
+                      subset = cut %in% c("Ideal", "Premium"),
+                      alternative = "two.sided",
+                      paired = FALSE,
+                      var.equal = FALSE,
+                      conf.level = 0.99)
+knitr::kable(tidy(IdealPremiumDiff), format = "html")
+```
+
+---
+class: middle, center, inverse
+
+# Les tests d'hypothèses
+### Les test d'hypothèses sur une différence de moyennes
+#### Échantillons pairés
+
+---
+
+Nous allons faire un test d'hypothèses bilatéral sur la différence de production d'orge entre les années 1931 et 1932 au niveau de confiance de 95%.
+
+```{r eval=FALSE}
+BarleyPaired <- t.test(immer$Y1, 
+                       immer$Y2,
+                       paired=TRUE)
+tidy(BarleyPaired)
+```
+
+--
+
+```{r echo=FALSE}
+BarleyPaired <- t.test(immer$Y1, 
+                       immer$Y2,
+                       paired=TRUE)
+knitr::kable(tidy(BarleyPaired), format = "html")
+```
+
+---
+class: middle, center, inverse
+
+# Les tests d'hypothèses
+### Les test d'hypothèses sur une différence de proportions
+
+---
+
+Nous pouvons faire un test sur la différence de poportions entre les diamants de coupe `Ideal` et les diamants de couleur `E`.
+
+```{r eval=FALSE}
+PropPremiumE <- prop.test(with(diamonds,table(cut == "Premium",color == "E")))
+tidy(PropPremiumE)
+```
+
+--
+
+```{r echo=FALSE}
+PropPremiumE <- prop.test(with(diamonds,table(cut == "Premium",color == "E")))
+knitr::kable(tidy(PropPremiumE), format = "html")
+```
+
+---
+class: middle, center, inverse
+
+# Les tests d'hypothèses
+### Le test du $\chi^2$ pour une variable
+
+---
+
+Nous voulons faire un test du $\chi^2$ pour savoir si toutes les modalités de la variable `cut` sont présentes de façon égales.
+
+```{r eval=FALSE}
+ChiCut <- chisq.test(x = table(diamonds$cut))
+tidy(ChiCut)
+```
+
+--
+
+```{r echo=FALSE}
+ChiCut <- chisq.test(x = table(diamonds$cut))
+knitr::kable(tidy(ChiCut), format = "html")
+```
+
+---
+class: middle, center, inverse
+
+# Les tests d'hypothèses
+### Le test du $\chi^2$ pour deux variables
+
+---
+
+Nous voulons faire un test du $\chi^2$ pour savoir si la  variable `cut` dépend de la variable `color`.
+
+```{r eval=FALSE}
+ChiCutColor <- chisq.test(x = table(diamonds$cut, diamonds$color))
+tidy(ChiCutColor)
+```
+
+--
+
+```{r echo=FALSE}
+ChiCutColor <- chisq.test(x = table(diamonds$cut, diamonds$color))
+knitr::kable(tidy(ChiCutColor), format = "html")
 ```

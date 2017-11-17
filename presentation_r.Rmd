@@ -81,10 +81,6 @@ table(diamonds$cut)
 > 
 > Trouvez le mode de la variable `color`
 
-```{r}
-table(diamonds$color)
-```
-
 ### La moyenne
 
 Calculez la moyenne (`mean`) de la variable `cut`.
@@ -96,10 +92,6 @@ mean(diamonds$price)
 > 
 > Trouvez la moyenne de la variable `carat`
 
-```{r}
-mean(diamonds$carat)
-```
-
 ### La médiane
 
 Calculez la médiane (`median`) de la variable `price`.
@@ -110,10 +102,6 @@ median(diamonds$price)
 > **Défi** :
 > 
 > Trouvez la médiane de la variable `carat`
-
-```{r}
-median(diamonds$carat)
-```
 
 ## Mesures de dispersion
 
@@ -130,12 +118,6 @@ res[2]-res[1]
 > 
 > Trouvez l'étendue de la variable `price`
 
-```{r}
-res <- range(diamonds$price)
-res
-res[2]-res[1]
-```
-
 ### La variance
 
 Calculez la variance (`var`) de la variable `price`.
@@ -146,10 +128,6 @@ var(diamonds$price)
 > **Défi** :
 > 
 > Trouvez la variance de la variable `carat`
-
-```{r}
-var(diamonds$carat)
-```
 
 ### L'écart-type
 
@@ -162,25 +140,12 @@ sd(diamonds$carat)
 > 
 > Trouvez l'écart-type de la variable `price`
 
-```{r}
-sd(diamonds$price)
-```
-
 ### Le coefficient de variation
 
 Calculez le coefficient de variation de la variable `price`.
 ```{r}
 prix <- diamonds$price
 sd(prix)/mean(prix)*100
-```
-
-> **Défi** :
-> 
-> Trouvez le coefficient de variation de la variable `carat`
-
-```{r}
-carat <- diamonds$carat
-sd(carat)/mean(carat)*100
 ```
 
 ## Mesures de position
@@ -210,10 +175,6 @@ summary(diamonds$price)
 > 
 > Trouvez le sommaire de la variable `carat`
 
-```{r}
-summary(diamonds$carat)
-```
-
 ### Le rang centile
 
 Calculez le rang centile d'un diamant valant 850$.
@@ -233,10 +194,6 @@ table(diamonds$cut)
 > **Défi** :
 > 
 > Faites un tableau de la variable `color`
-
-```{r}
-table(diamonds$color)
-```
 
 Nous pouvons ajouter le total à une table en utilisant la commande `adddmargins`.
 ```{r}
@@ -465,11 +422,6 @@ head(augment(lmfit))
 
 ## Les intervalles de confiance sur une moyenne
 
-Trouvons la moyenne du prix des diamants.
-```{r}
-mean(diamonds$price)
-```
-
 Nous allons trouver un intervalle de confiance au niveau de 95% de la moyenne du prix des diamants.
 ```{r}
 tidy(t.test(diamonds$price,
@@ -591,7 +543,7 @@ Voici le tableau représentant la variable `cut`.
 table(diamonds$cut)
 ```
 
-Nous voulons faire un test du $\chi^2$ pour savoir si toutes les modalités de la variable sont présentes de façon égales.
+Nous voulons faire un test du $\chi^2$ pour savoir si toutes les modalités de la variable `cut` sont présentes de façon égales.
 ```{r}
 ChiCut <- chisq.test(x = table(diamonds$cut))
 tidy(ChiCut)
@@ -615,4 +567,3 @@ tidy(ChiCutColor)
 ```{r}
 sessionInfo()
 ```
-
