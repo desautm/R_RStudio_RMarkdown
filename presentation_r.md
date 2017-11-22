@@ -1,7 +1,7 @@
 ---
 title: "Une introduction au langage `R`, `RStudio` et `R Markdown`"
 author: "ECRIVEZ VOTRE NOM ICI"
-date: "Le 2017-11-17"
+date: "Le 2017-11-22"
 output:
   html_document:
     keep_md: true
@@ -675,26 +675,6 @@ head(augment(lmfit))
 ```
 
 ```
-## Warning: Deprecated: please use `purrr::possibly()` instead
-```
-
-```
-## Warning: Deprecated: please use `purrr::possibly()` instead
-```
-
-```
-## Warning: Deprecated: please use `purrr::possibly()` instead
-```
-
-```
-## Warning: Deprecated: please use `purrr::possibly()` instead
-```
-
-```
-## Warning: Deprecated: please use `purrr::possibly()` instead
-```
-
-```
 ##   price carat     .fitted   .se.fit   .resid         .hat   .sigma
 ## 1   326  0.23 -472.382688 10.405828 798.3827 4.515399e-05 1548.572
 ## 2   326  0.21 -627.511200 10.623347 953.5112 4.706148e-05 1548.571
@@ -1010,7 +990,7 @@ sessionInfo()
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-## [1] rmarkdown_1.7.7 MASS_7.3-47     broom_0.4.2     ggplot2_2.2.1  
+## [1] rmarkdown_1.8 MASS_7.3-47   broom_0.4.3   ggplot2_2.2.1
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] Rcpp_0.12.13     compiler_3.4.2   plyr_1.8.4       bindr_0.1       
@@ -1019,8 +999,8 @@ sessionInfo()
 ## [13] rlang_0.1.4      psych_1.7.8      yaml_2.1.14      parallel_3.4.2  
 ## [17] bindrcpp_0.2     dplyr_0.7.4      stringr_1.2.0    knitr_1.17      
 ## [21] rprojroot_1.2    grid_3.4.2       glue_1.2.0       R6_2.2.2        
-## [25] foreign_0.8-69   reshape2_1.4.2   tidyr_0.7.2      purrr_0.2.4     
+## [25] foreign_0.8-69   tidyr_0.7.2      purrr_0.2.4      reshape2_1.4.2  
 ## [29] magrittr_1.5     backports_1.1.1  scales_0.5.0     htmltools_0.3.6 
 ## [33] assertthat_0.2.0 mnormt_1.5-5     colorspace_1.3-2 labeling_0.3    
-## [37] stringi_1.1.5    lazyeval_0.2.1   munsell_0.4.3
+## [37] stringi_1.1.6    lazyeval_0.2.1   munsell_0.4.3
 ```
