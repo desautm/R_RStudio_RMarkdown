@@ -3,14 +3,14 @@ title: "Une introduction au langage `R`, `RStudio` et `R Markdown`"
 author: "ECRIVEZ VOTRE NOM ICI"
 date: "Le `r Sys.Date()`"
 output:
-  pdf_document:
-    toc: yes
-  word_document:
-    toc: yes
   html_document:
     keep_md: true
     toc: yes
     toc_float: yes
+  word_document:
+    toc: yes
+  pdf_document:
+    toc: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -32,7 +32,7 @@ Les documents en `R Markdown` se veulent être une solution pour faire de la [pr
 Pour ajouter un nouveau bloc de code, vous appuyez sur le bouton *Insert* ou alors vous appuyez sur *Ctrl+Alt+I*.
 
 ```{r}
-list.of.packages <- c("ggplot2", "broom", "MASS", "rmarkdown")
+list.of.packages <- c("ggplot2", "broom", "MASS", "rmarkdown","questionr")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 ```
@@ -42,6 +42,7 @@ library(ggplot2)
 library(broom)
 library(MASS)
 library(rmarkdown)
+library(questionr)
 ```
 
 Le bloc précédent ne sert qu'à initialiser des librairies que nous pourrons utiliser plus tard.
@@ -70,92 +71,43 @@ diamonds$cut[1:10]
 
 ## Mesures de tendance centrale
 
-### Le mode
+### Le mode, la moyenne et la médiane
 
-Calculez le mode de la variable `cut`.
+Calculez le mode de la variable `cut`, la moyenne (`mean`) et la médiane (`median`) de la variable `price`.
 ```{r}
 table(diamonds$cut)
-```
-
-> **Défi** :
-> 
-> Trouvez le mode de la variable `color`
-
-### La moyenne
-
-Calculez la moyenne (`mean`) de la variable `cut`.
-```{r}
 mean(diamonds$price)
-```
-
-> **Défi** :
-> 
-> Trouvez la moyenne de la variable `carat`
-
-### La médiane
-
-Calculez la médiane (`median`) de la variable `price`.
-```{r}
 median(diamonds$price)
 ```
 
 > **Défi** :
 > 
-> Trouvez la médiane de la variable `carat`
+> Trouvez le mode de la variable `color`, la moyenne de la variable `carat` et  la médiane de la variable `carat`.
 
 ## Mesures de dispersion
 
-### L'étendue
+### L'étendue, la variance et l'écart type
 
-Calculez l'étendue (`range`) de la variable `carat`.
+Calculez l'étendue (`range`) de la variable `carat`, la variance (`var`) de la variable `price` et l'écart-type (`sd`) de la variable `carat`.
 ```{r}
-res <- range(diamonds$carat)
-res
-res[2]-res[1]
-```
-
-> **Défi** :
-> 
-> Trouvez l'étendue de la variable `price`
-
-### La variance
-
-Calculez la variance (`var`) de la variable `price`.
-```{r}
+max(diamonds$carat)-min(diamonds$carat)
 var(diamonds$price)
-```
-
-> **Défi** :
-> 
-> Trouvez la variance de la variable `carat`
-
-### L'écart-type
-
-Calculez l'écart-type (`sd`) de la variable `carat`.
-```{r}
 sd(diamonds$carat)
 ```
 
 > **Défi** :
 > 
-> Trouvez l'écart-type de la variable `price`
+> Trouvez l'étendue de la variable `price`, la variance de la variable `carat` et l'écart-type de la variable `price`.
+
 
 ### Le coefficient de variation
 
-Calculez le coefficient de variation de la variable `price`.
-```{r}
-prix <- diamonds$price
-sd(prix)/mean(prix)*100
-```
+> **Défi** :
+> 
+> Calculez le coefficient de variation de la variable `price`.
+
 
 ## Mesures de position
-
-### La cote z
-
-Calculez la cote z d'un diamant de prix 650$.
-```{r}
-(650-mean(prix))/sd(prix)
-```
 
 ### Les quantiles
 
@@ -173,7 +125,7 @@ summary(diamonds$price)
 
 > **Défi** :
 > 
-> Trouvez le sommaire de la variable `carat`
+> Trouvez le sommaire de la variable `carat` et le centile 63 de la variable `price`.
 
 ### Le rang centile
 
@@ -182,6 +134,12 @@ Calculez le rang centile d'un diamant valant 850$.
 mean(diamonds$price<=850)
 ```
 
+### La cote z
+
+> **Défi** :
+> 
+> Calculez la cote z d'un diamant de prix 650$.
+
 # Tableaux
 
 ## Tableaux à une variable
@@ -189,6 +147,14 @@ mean(diamonds$price<=850)
 Nous pouvons créer un tableau à une variable à l'aide de la commande `table`. Créez une table de la variable `cut` de la base de données `diamonds`.
 ```{r}
 table(diamonds$cut)
+```
+
+```{r}
+freq(diamonds$cut,
+     valid = FALSE,
+     digits = 2,
+     cum = TRUE,
+     total = TRUE)
 ```
 
 > **Défi** :
