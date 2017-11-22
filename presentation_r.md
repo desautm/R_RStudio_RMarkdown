@@ -34,7 +34,7 @@ Pour ajouter un nouveau bloc de code, vous appuyez sur le bouton *Insert* ou alo
 
 
 ```r
-list.of.packages <- c("ggplot2", "broom", "MASS", "rmarkdown")
+list.of.packages <- c("ggplot2", "broom", "MASS", "rmarkdown","questionr")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 ```
@@ -45,6 +45,7 @@ library(ggplot2)
 library(broom)
 library(MASS)
 library(rmarkdown)
+library(questionr)
 ```
 
 Le bloc précédent ne sert qu'à initialiser des librairies que nous pourrons utiliser plus tard.
@@ -99,9 +100,9 @@ diamonds$cut[1:10]
 
 ## Mesures de tendance centrale
 
-### Le mode
+### Le mode, la moyenne et la médiane
 
-Calculez le mode de la variable `cut`.
+Calculez le mode de la variable `cut`, la moyenne (`mean`) et la médiane (`median`) de la variable `price`.
 
 ```r
 table(diamonds$cut)
@@ -113,14 +114,6 @@ table(diamonds$cut)
 ##      1610      4906     12082     13791     21551
 ```
 
-> **Défi** :
-> 
-> Trouvez le mode de la variable `color`
-
-### La moyenne
-
-Calculez la moyenne (`mean`) de la variable `cut`.
-
 ```r
 mean(diamonds$price)
 ```
@@ -128,14 +121,6 @@ mean(diamonds$price)
 ```
 ## [1] 3932.8
 ```
-
-> **Défi** :
-> 
-> Trouvez la moyenne de la variable `carat`
-
-### La médiane
-
-Calculez la médiane (`median`) de la variable `price`.
 
 ```r
 median(diamonds$price)
@@ -147,38 +132,21 @@ median(diamonds$price)
 
 > **Défi** :
 > 
-> Trouvez la médiane de la variable `carat`
+> Trouvez le mode de la variable `color`, la moyenne de la variable `carat` et  la médiane de la variable `carat`.
 
 ## Mesures de dispersion
 
-### L'étendue
+### L'étendue, la variance et l'écart type
 
-Calculez l'étendue (`range`) de la variable `carat`.
-
-```r
-res <- range(diamonds$carat)
-res
-```
-
-```
-## [1] 0.20 5.01
-```
+Calculez l'étendue (`range`) de la variable `carat`, la variance (`var`) de la variable `price` et l'écart-type (`sd`) de la variable `carat`.
 
 ```r
-res[2]-res[1]
+max(diamonds$carat)-min(diamonds$carat)
 ```
 
 ```
 ## [1] 4.81
 ```
-
-> **Défi** :
-> 
-> Trouvez l'étendue de la variable `price`
-
-### La variance
-
-Calculez la variance (`var`) de la variable `price`.
 
 ```r
 var(diamonds$price)
@@ -187,14 +155,6 @@ var(diamonds$price)
 ```
 ## [1] 15915629
 ```
-
-> **Défi** :
-> 
-> Trouvez la variance de la variable `carat`
-
-### L'écart-type
-
-Calculez l'écart-type (`sd`) de la variable `carat`.
 
 ```r
 sd(diamonds$carat)
@@ -206,34 +166,17 @@ sd(diamonds$carat)
 
 > **Défi** :
 > 
-> Trouvez l'écart-type de la variable `price`
+> Trouvez l'étendue de la variable `price`, la variance de la variable `carat` et l'écart-type de la variable `price`.
+
 
 ### Le coefficient de variation
 
-Calculez le coefficient de variation de la variable `price`.
+> **Défi** :
+> 
+> Calculez le coefficient de variation de la variable `price`.
 
-```r
-prix <- diamonds$price
-sd(prix)/mean(prix)*100
-```
-
-```
-## [1] 101.4402
-```
 
 ## Mesures de position
-
-### La cote z
-
-Calculez la cote z d'un diamant de prix 650$.
-
-```r
-(650-mean(prix))/sd(prix)
-```
-
-```
-## [1] -0.8228724
-```
 
 ### Les quantiles
 
@@ -279,7 +222,7 @@ summary(diamonds$price)
 
 > **Défi** :
 > 
-> Trouvez le sommaire de la variable `carat`
+> Trouvez le sommaire de la variable `carat` et le centile 63 de la variable `price`.
 
 ### Le rang centile
 
@@ -292,6 +235,12 @@ mean(diamonds$price<=850)
 ```
 ## [1] 0.2062291
 ```
+
+### La cote z
+
+> **Défi** :
+> 
+> Calculez la cote z d'un diamant de prix 650$.
 
 # Tableaux
 
@@ -307,6 +256,25 @@ table(diamonds$cut)
 ## 
 ##      Fair      Good Very Good   Premium     Ideal 
 ##      1610      4906     12082     13791     21551
+```
+
+
+```r
+freq(diamonds$cut,
+     valid = FALSE,
+     digits = 2,
+     cum = TRUE,
+     total = TRUE)
+```
+
+```
+##               n      %   %cum
+## Fair       1610   2.98   2.98
+## Good       4906   9.10  12.08
+## Very Good 12082  22.40  34.48
+## Premium   13791  25.57  60.05
+## Ideal     21551  39.95 100.00
+## Total     53940 100.00 100.00
 ```
 
 > **Défi** :
@@ -433,7 +401,7 @@ Tracez le diagramme à bandes de la variable `clarity`.
 qplot(diamonds$clarity, xlab="Clarté", ylab="Fréquence", main="Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-24-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-19-1.png)<!-- -->
 
 En utilisant `ggplot`.
 
@@ -446,7 +414,7 @@ ggplot(diamonds, aes(clarity)) +
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-25-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-20-1.png)<!-- -->
 
 ## Les variables quantitatives
 
@@ -462,7 +430,7 @@ qplot(mtcars$cyl, xlab="Nombre de cylindres", ylab="Fréquence", main="Un beau t
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-26-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-21-1.png)<!-- -->
 
 En utilisant `ggplot`.
 
@@ -475,7 +443,7 @@ ggplot(mtcars, aes(cyl)) +
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-27-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-22-1.png)<!-- -->
 
 ### L'histogramme
 
@@ -489,7 +457,7 @@ qplot(diamonds$price, xlab="Prix", ylab="Fréquence", main="Un beau titre...")
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-28-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-23-1.png)<!-- -->
 
 En utilisant `ggplot`.
 
@@ -502,7 +470,7 @@ ggplot(diamonds, aes(price)) +
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-29-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-24-1.png)<!-- -->
 
 ### Le polygone de fréquences
 
@@ -517,7 +485,7 @@ ggplot(diamonds, aes(price)) +
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-30-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-25-1.png)<!-- -->
 
 Tracez l'histogramme et le polygone de fréquences superposés.
 
@@ -531,7 +499,7 @@ ggplot(diamonds, aes(price)) +
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-31-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-26-1.png)<!-- -->
 
 ### L'ogive des pourcentages cumulés
 
@@ -546,7 +514,7 @@ ggplot(diamonds, aes(price)) +
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-32-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-27-1.png)<!-- -->
 
 ## Représenter deux variables
 
@@ -563,7 +531,7 @@ ggplot(diamonds, aes(x=cut, fill=color))+
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-33-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-28-1.png)<!-- -->
 
 Tracez un diagramme à bandes comprenant la variable `cut` et la variable `color` avec les variables côtes à côtes. On utilise l'option `position="dodge"`.
 
@@ -576,7 +544,7 @@ ggplot(diamonds, aes(x=cut, fill=color))+
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-34-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-29-1.png)<!-- -->
 
 Tracez un diagramme à bandes comprenant la variable `cut` et la variable `color` avec des fréquences relatives. On utilise l'option `position="fill"`.
 
@@ -589,7 +557,7 @@ ggplot(diamonds, aes(x=cut, fill=color))+
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-35-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-30-1.png)<!-- -->
 
 ### Une variable qualitative et une variable quantitative
 
@@ -604,7 +572,7 @@ ggplot(diamonds, aes(x = cut, y = price)) +
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-36-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-31-1.png)<!-- -->
 
 ### Deux variables quantitatives
 
@@ -619,7 +587,7 @@ ggplot(diamonds, aes(x=carat, y=price))+
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-37-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-32-1.png)<!-- -->
 
 # Régression linéaire
 
@@ -635,7 +603,7 @@ ggplot(diamonds, aes(x=carat, y=price))+
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-38-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-33-1.png)<!-- -->
 
 Nous pouvons trouver les coefficients $a$ et $b$ de la droite $y=ax+b$ en utilisant la commande `lm`.
 
@@ -990,17 +958,21 @@ sessionInfo()
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-## [1] rmarkdown_1.8 MASS_7.3-47   broom_0.4.3   ggplot2_2.2.1
+## [1] questionr_0.6.2 rmarkdown_1.8   MASS_7.3-47     broom_0.4.3    
+## [5] ggplot2_2.2.1  
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_0.12.13     compiler_3.4.2   plyr_1.8.4       bindr_0.1       
-##  [5] tools_3.4.2      digest_0.6.12    evaluate_0.10.1  tibble_1.3.4    
-##  [9] gtable_0.2.0     nlme_3.1-131     lattice_0.20-35  pkgconfig_2.0.1 
-## [13] rlang_0.1.4      psych_1.7.8      yaml_2.1.14      parallel_3.4.2  
-## [17] bindrcpp_0.2     dplyr_0.7.4      stringr_1.2.0    knitr_1.17      
-## [21] rprojroot_1.2    grid_3.4.2       glue_1.2.0       R6_2.2.2        
-## [25] foreign_0.8-69   tidyr_0.7.2      purrr_0.2.4      reshape2_1.4.2  
-## [29] magrittr_1.5     backports_1.1.1  scales_0.5.0     htmltools_0.3.6 
-## [33] assertthat_0.2.0 mnormt_1.5-5     colorspace_1.3-2 labeling_0.3    
-## [37] stringi_1.1.6    lazyeval_0.2.1   munsell_0.4.3
+##  [1] Rcpp_0.12.13     highr_0.6        compiler_3.4.2   plyr_1.8.4      
+##  [5] bindr_0.1        forcats_0.2.0    tools_3.4.2      digest_0.6.12   
+##  [9] evaluate_0.10.1  tibble_1.3.4     gtable_0.2.0     nlme_3.1-131    
+## [13] lattice_0.20-35  pkgconfig_2.0.1  rlang_0.1.4      psych_1.7.8     
+## [17] rstudioapi_0.7   shiny_1.0.5      yaml_2.1.14      parallel_3.4.2  
+## [21] haven_1.1.0      bindrcpp_0.2     dplyr_0.7.4      stringr_1.2.0   
+## [25] knitr_1.17       rprojroot_1.2    grid_3.4.2       glue_1.2.0      
+## [29] R6_2.2.2         foreign_0.8-69   tidyr_0.7.2      purrr_0.2.4     
+## [33] reshape2_1.4.2   magrittr_1.5     backports_1.1.1  scales_0.5.0    
+## [37] htmltools_0.3.6  labelled_1.0.0   assertthat_0.2.0 mnormt_1.5-5    
+## [41] xtable_1.8-2     mime_0.5         colorspace_1.3-2 httpuv_1.3.5    
+## [45] labeling_0.3     miniUI_0.1.1     stringi_1.1.6    lazyeval_0.2.1  
+## [49] munsell_0.4.3
 ```
