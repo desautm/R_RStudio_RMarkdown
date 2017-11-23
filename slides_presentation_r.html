@@ -18,6 +18,7 @@ class: center, middle, inverse, title-slide
 
 
 
+
 class: middle
 
 ### Rendez-vous à l'adresse suivante:
@@ -455,33 +456,6 @@ Il y a donc 20.6229143% de diamants ayant un prix inférieur ou égal  à 850$.
 
 ---
 layout: false
-layout: true
-
-## Mesures de position
-### La cote z
-
----
-
-&gt; **Défi** :
-&gt; 
-&gt; Calculez la cote z d'un diamant de prix 650$.
-
---
-
-
-```r
-(650-mean(diamonds$price))/sd(diamonds$price)
-```
-
---
-
-
-```
-## [1] -0.8228724
-```
-
----
-layout: false
 class: center, middle, inverse
 
 # Les tableaux
@@ -726,7 +700,7 @@ qplot(diamonds$clarity, xlab="Clarté", ylab="Fréquence", main="Un beau titre..
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-44-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-42-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -742,7 +716,7 @@ ggplot(diamonds, aes(clarity)) +
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-46-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-44-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 class: middle, center, inverse
@@ -767,7 +741,7 @@ qplot(mtcars$cyl, xlab="Nombre de cylindres", ylab="Fréquence", main="Un beau t
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-48-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-46-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -783,7 +757,7 @@ ggplot(mtcars, aes(cyl)) +
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-50-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-48-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 class: middle, center, inverse
@@ -808,7 +782,7 @@ qplot(diamonds$price, xlab="Prix", ylab="Fréquence", main="Un beau titre...")
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-52-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-50-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -824,7 +798,7 @@ ggplot(diamonds, aes(price)) +
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-54-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-52-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 class: middle, center, inverse
@@ -845,7 +819,7 @@ ggplot(diamonds, aes(price)) +
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-56-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-54-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -862,7 +836,7 @@ ggplot(diamonds, aes(price)) +
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-58-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-56-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 class: middle, center, inverse
@@ -883,7 +857,7 @@ ggplot(diamonds, aes(price)) +
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-60-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-58-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 class: middle, center, inverse
@@ -904,7 +878,7 @@ ggplot(diamonds, aes(x=cut, fill=color))+
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-62-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-60-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -920,7 +894,7 @@ ggplot(diamonds, aes(x=cut, fill=color))+
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-64-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-62-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -936,7 +910,7 @@ ggplot(diamonds, aes(x=cut, fill=color))+
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-66-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-64-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -952,7 +926,7 @@ ggplot(diamonds, aes(x = cut, y = price)) +
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-68-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-66-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -968,7 +942,7 @@ ggplot(diamonds, aes(x=carat, y=price))+
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-70-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-68-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 class: center, middle, inverse
@@ -990,7 +964,7 @@ ggplot(diamonds, aes(x=carat, y=price))+
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-72-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-70-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1012,33 +986,12 @@ tidy(lmfit)
 
 --
 
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; term &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; estimate &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; std.error &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; statistic &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; p.value &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; (Intercept) &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -2256.361 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 13.05535 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -172.8304 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; carat &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 7756.426 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 14.06658 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 551.4081 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+
+```
+##          term  estimate std.error statistic p.value
+## 1 (Intercept) -2256.361  13.05535 -172.8304       0
+## 2       carat  7756.426  14.06658  551.4081       0
+```
 
 --
 
@@ -1049,38 +1002,13 @@ glance(lmfit)
 
 --
 
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:right;"&gt; r.squared &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; adj.r.squared &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; sigma &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; statistic &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; p.value &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; df &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; logLik &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; AIC &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; BIC &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; deviance &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; df.residual &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 0.8493305 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.8493277 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1548.562 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 304050.9 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -472730.3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 945466.5 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 945493.2 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 129345695398 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 53938 &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+
+```
+##   r.squared adj.r.squared    sigma statistic p.value df    logLik      AIC
+## 1 0.8493305     0.8493277 1548.562  304050.9       0  2 -472730.3 945466.5
+##        BIC     deviance df.residual
+## 1 945493.2 129345695398       53938
+```
 
 ---
 
@@ -1093,89 +1021,23 @@ head(augment(lmfit))
 
 --
 
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:right;"&gt; price &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; carat &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; .fitted &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; .se.fit &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; .resid &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; .hat &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; .sigma &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; .cooksd &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; .std.resid &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 326 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.23 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -472.382688 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 10.405828 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 798.3827 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4.52e-05 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1548.572 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 6.0e-06 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.5155756 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 326 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.21 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -627.511200 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 10.623347 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 953.5112 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4.71e-05 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1548.571 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 8.9e-06 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.6157543 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 327 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.23 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -472.382688 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 10.405828 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 799.3827 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4.52e-05 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1548.572 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 6.0e-06 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.5162214 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 334 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.29 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -6.997151 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 9.772834 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 340.9972 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.98e-05 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1548.576 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.0e-06 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.2202069 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 335 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.31 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 148.131361 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 9.569076 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 186.8686 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.82e-05 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1548.576 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.0e-07 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.1206747 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 336 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.24 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -394.818432 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 10.298227 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 730.8184 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4.42e-05 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1548.573 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4.9e-06 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.4719441 &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+
+```
+##   price carat     .fitted   .se.fit   .resid         .hat   .sigma
+## 1   326  0.23 -472.382688 10.405828 798.3827 4.515399e-05 1548.572
+## 2   326  0.21 -627.511200 10.623347 953.5112 4.706148e-05 1548.571
+## 3   327  0.23 -472.382688 10.405828 799.3827 4.515399e-05 1548.572
+## 4   334  0.29   -6.997151  9.772834 340.9972 3.982758e-05 1548.576
+## 5   335  0.31  148.131362  9.569076 186.8686 3.818413e-05 1548.576
+## 6   336  0.24 -394.818432 10.298227 730.8184 4.422500e-05 1548.573
+##        .cooksd .std.resid
+## 1 6.001647e-06  0.5155756
+## 2 8.922178e-06  0.6157543
+## 3 6.016690e-06  0.5162214
+## 4 9.656791e-07  0.2202069
+## 5 2.780364e-07  0.1206747
+## 6 4.925361e-06  0.4719441
+```
 
 ---
 class: middle, center, inverse
@@ -1196,32 +1058,13 @@ tidy(t.test(diamonds$price,
 
 --
 
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:right;"&gt; estimate &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; statistic &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; p.value &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; parameter &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; conf.low &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; conf.high &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; method &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; alternative &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 3932.8 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 228.9525 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 53939 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3899.132 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3966.467 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; One Sample t-test &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; two.sided &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+
+```
+##   estimate statistic p.value parameter conf.low conf.high
+## 1   3932.8  228.9525       0     53939 3899.132  3966.467
+##              method alternative
+## 1 One Sample t-test   two.sided
+```
 
 --
 
@@ -1235,32 +1078,13 @@ tidy(t.test(diamonds$price,
 
 --
 
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:right;"&gt; estimate &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; statistic &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; p.value &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; parameter &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; conf.low &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; conf.high &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; method &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; alternative &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 3932.8 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 228.9525 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 53939 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3888.552 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3977.047 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; One Sample t-test &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; two.sided &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+
+```
+##   estimate statistic p.value parameter conf.low conf.high
+## 1   3932.8  228.9525       0     53939 3888.552  3977.047
+##              method alternative
+## 1 One Sample t-test   two.sided
+```
 
 ---
 
@@ -1273,32 +1097,13 @@ tidy(prop.test(with(diamonds,table(cut!="Ideal"))))
 
 --
 
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:right;"&gt; estimate &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; statistic &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; p.value &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; parameter &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; conf.low &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; conf.high &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; method &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; alternative &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 0.3995365 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2177.245 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.3954011 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.4036863 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 1-sample proportions test with continuity correction &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; two.sided &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+
+```
+##    estimate statistic p.value parameter  conf.low conf.high
+## 1 0.3995365  2177.245       0         1 0.3954011 0.4036863
+##                                                 method alternative
+## 1 1-sample proportions test with continuity correction   two.sided
+```
 
 
 --
@@ -1313,32 +1118,13 @@ tidy(prop.test(with(diamonds,table(cut!="Ideal")),
 
 --
 
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:right;"&gt; estimate &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; statistic &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; p.value &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; parameter &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; conf.low &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; conf.high &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; method &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; alternative &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 0.3995365 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2177.245 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.3941077 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.4049901 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 1-sample proportions test with continuity correction &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; two.sided &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+
+```
+##    estimate statistic p.value parameter  conf.low conf.high
+## 1 0.3995365  2177.245       0         1 0.3941077 0.4049901
+##                                                 method alternative
+## 1 1-sample proportions test with continuity correction   two.sided
+```
 
 ---
 class: middle, center, inverse
@@ -1363,32 +1149,13 @@ tidy(PrixDiff)
 
 --
 
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:right;"&gt; estimate &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; statistic &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; p.value &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; parameter &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; conf.low &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; conf.high &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; method &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; alternative &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 3932.8 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.909474 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.0562063 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 53939 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3899.132 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3966.467 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; One Sample t-test &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; two.sided &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+
+```
+##   estimate statistic    p.value parameter conf.low conf.high
+## 1   3932.8  1.909474 0.05620629     53939 3899.132  3966.467
+##              method alternative
+## 1 One Sample t-test   two.sided
+```
 
 ---
 
@@ -1407,32 +1174,13 @@ tidy(PrixPlusGrand)
 
 --
 
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:right;"&gt; estimate &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; statistic &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; p.value &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; parameter &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; conf.low &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; conf.high &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; method &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; alternative &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 3932.8 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.909474 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.0281031 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 53939 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3910.786 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; Inf &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; One Sample t-test &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; greater &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+
+```
+##   estimate statistic    p.value parameter conf.low conf.high
+## 1   3932.8  1.909474 0.02810314     53939 3910.786       Inf
+##              method alternative
+## 1 One Sample t-test     greater
+```
 
 ---
 class: middle, center, inverse
@@ -1455,32 +1203,13 @@ tidy(IdealPlusPetit)
 
 --
 
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:right;"&gt; estimate &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; statistic &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; p.value &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; parameter &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; conf.low &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; conf.high &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; method &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; alternative &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 0.3995365 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 6.658899 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.0049331 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.4030197 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 1-sample proportions test with continuity correction &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; less &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+
+```
+##    estimate statistic     p.value parameter conf.low conf.high
+## 1 0.3995365  6.658899 0.004933094         1        0 0.4030197
+##                                                 method alternative
+## 1 1-sample proportions test with continuity correction        less
+```
 
 ---
 class: middle, center, inverse
@@ -1507,36 +1236,13 @@ tidy(IdealPremiumDiff)
 
 --
 
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:right;"&gt; estimate &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; estimate1 &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; estimate2 &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; statistic &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; p.value &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; parameter &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; conf.low &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; conf.high &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; method &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; alternative &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 1126.716 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4584.258 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3457.542 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 24.91787 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 26552.16 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1010.236 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1243.196 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Welch Two Sample t-test &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; two.sided &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+
+```
+##   estimate estimate1 estimate2 statistic       p.value parameter conf.low
+## 1 1126.716  4584.258  3457.542  24.91787 1.718905e-135  26552.16 1010.236
+##   conf.high                  method alternative
+## 1  1243.196 Welch Two Sample t-test   two.sided
+```
 
 ---
 class: middle, center, inverse
@@ -1559,32 +1265,13 @@ tidy(BarleyPaired)
 
 --
 
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:right;"&gt; estimate &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; statistic &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; p.value &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; parameter &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; conf.low &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; conf.high &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; method &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; alternative &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 15.91333 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.323987 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.0024126 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 29 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 6.121954 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 25.70471 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Paired t-test &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; two.sided &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+
+```
+##   estimate statistic     p.value parameter conf.low conf.high
+## 1 15.91333  3.323987 0.002412634        29 6.121954  25.70471
+##          method alternative
+## 1 Paired t-test   two.sided
+```
 
 ---
 class: middle, center, inverse
@@ -1604,34 +1291,17 @@ tidy(PropPremiumE)
 
 --
 
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:right;"&gt; estimate1 &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; estimate2 &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; statistic &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; p.value &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; parameter &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; conf.low &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; conf.high &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; method &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; alternative &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 0.8141921 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.8305417 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 18.35038 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.84e-05 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -0.0237248 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -0.0089743 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 2-sample test for equality of proportions with continuity correction &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; two.sided &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+
+```
+##   estimate1 estimate2 statistic      p.value parameter    conf.low
+## 1 0.8141921 0.8305417  18.35038 1.837823e-05         1 -0.02372478
+##      conf.high
+## 1 -0.008974267
+##                                                                 method
+## 1 2-sample test for equality of proportions with continuity correction
+##   alternative
+## 1   two.sided
+```
 
 ---
 class: middle, center, inverse
@@ -1651,24 +1321,11 @@ tidy(ChiCut)
 
 --
 
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:right;"&gt; statistic &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; p.value &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; parameter &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; method &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 22744.55 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Chi-squared test for given probabilities &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+
+```
+##   statistic p.value parameter                                   method
+## 1  22744.55       0         4 Chi-squared test for given probabilities
+```
 
 ---
 class: middle, center, inverse
@@ -1688,24 +1345,11 @@ tidy(ChiCutColor)
 
 --
 
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:right;"&gt; statistic &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; p.value &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; parameter &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; method &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 310.3179 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Pearson's Chi-squared test &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+
+```
+##   statistic      p.value parameter                     method
+## 1  310.3179 1.394512e-51        24 Pearson's Chi-squared test
+```
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({

@@ -18,6 +18,7 @@ knitr::opts_chunk$set(fig.align = 'center',
                       fig.width = 6, 
                       fig.height = 6)
 ```
+
 class: middle
 
 ### Rendez-vous à l'adresse suivante:
@@ -364,31 +365,6 @@ mean(diamonds$price<=850)
 ```
 
 Il y a donc `r mean(diamonds$price<=850)*100`% de diamants ayant un prix inférieur ou égal  à 850$.
-
----
-layout: false
-layout: true
-
-## Mesures de position
-### La cote z
-
----
-
-> **Défi** :
-> 
-> Calculez la cote z d'un diamant de prix 650$.
-
---
-
-```{r eval=FALSE}
-(650-mean(diamonds$price))/sd(diamonds$price)
-```
-
---
-
-```{r echo=FALSE}
-(650-mean(diamonds$price))/sd(diamonds$price)
-```
 
 ---
 layout: false
@@ -944,7 +920,7 @@ tidy(lmfit)
 --
 
 ```{r echo=FALSE}
-knitr::kable(tidy(lmfit), format = "html")
+tidy(lmfit)
 ```
 
 --
@@ -956,7 +932,7 @@ glance(lmfit)
 --
 
 ```{r echo=FALSE}
-knitr::kable(glance(lmfit), format = "html")
+glance(lmfit)
 ```
 
 ---
@@ -970,7 +946,7 @@ head(augment(lmfit))
 --
 
 ```{r echo=FALSE, warning=FALSE}
-knitr::kable(head(augment(lmfit)), format = "html")
+head(augment(lmfit))
 ```
 
 ---
@@ -992,8 +968,8 @@ tidy(t.test(diamonds$price,
 --
 
 ```{r echo=FALSE}
-knitr::kable(tidy(t.test(diamonds$price,
-            conf.level = 0.95)), format = "html")
+tidy(t.test(diamonds$price,
+            conf.level = 0.95))
 ```
 
 --
@@ -1008,8 +984,8 @@ tidy(t.test(diamonds$price,
 --
 
 ```{r echo=FALSE}
-knitr::kable(tidy(t.test(diamonds$price,
-            conf.level = 0.99)), format = "html")
+tidy(t.test(diamonds$price,
+            conf.level = 0.99))
 ```
 
 ---
@@ -1023,7 +999,7 @@ tidy(prop.test(with(diamonds,table(cut!="Ideal"))))
 --
 
 ```{r echo=FALSE}
-knitr::kable(tidy(prop.test(with(diamonds,table(cut!="Ideal")))), format = "html")
+tidy(prop.test(with(diamonds,table(cut!="Ideal"))))
 ```
 
 
@@ -1039,8 +1015,8 @@ tidy(prop.test(with(diamonds,table(cut!="Ideal")),
 --
 
 ```{r echo=FALSE}
-knitr::kable(tidy(prop.test(with(diamonds,table(cut!="Ideal")),
-                 conf.level = 0.99)), format = "html")
+tidy(prop.test(with(diamonds,table(cut!="Ideal")),
+                 conf.level = 0.99))
 ```
 
 ---
@@ -1072,7 +1048,7 @@ PrixDiff <- t.test(diamonds$price,
             paired = FALSE, 
             var.equal = FALSE, 
             conf.level = 0.95)
-knitr::kable(tidy(PrixDiff), format = "html")
+tidy(PrixDiff)
 ```
 
 ---
@@ -1098,7 +1074,7 @@ PrixPlusGrand <- t.test(diamonds$price,
                   paired = FALSE, 
                   var.equal = FALSE, 
                   conf.level = 0.90)
-knitr::kable(tidy(PrixPlusGrand), format = "html")
+tidy(PrixPlusGrand)
 ```
 
 ---
@@ -1126,7 +1102,7 @@ IdealPlusPetit <- prop.test(with(diamonds,table(cut!="Ideal")),
                     p = 0.405,
                     alternative = "less",
                     conf.level = 0.95)
-knitr::kable(tidy(IdealPlusPetit), format = "html")
+tidy(IdealPlusPetit)
 ```
 
 ---
@@ -1161,7 +1137,7 @@ IdealPremiumDiff <- t.test(formula = price ~ cut,
                       paired = FALSE,
                       var.equal = FALSE,
                       conf.level = 0.99)
-knitr::kable(tidy(IdealPremiumDiff), format = "html")
+tidy(IdealPremiumDiff)
 ```
 
 ---
@@ -1188,7 +1164,7 @@ tidy(BarleyPaired)
 BarleyPaired <- t.test(immer$Y1, 
                        immer$Y2,
                        paired=TRUE)
-knitr::kable(tidy(BarleyPaired), format = "html")
+tidy(BarleyPaired)
 ```
 
 ---
@@ -1210,7 +1186,7 @@ tidy(PropPremiumE)
 
 ```{r echo=FALSE}
 PropPremiumE <- prop.test(with(diamonds,table(cut == "Premium",color == "E")))
-knitr::kable(tidy(PropPremiumE), format = "html")
+tidy(PropPremiumE)
 ```
 
 ---
@@ -1232,7 +1208,7 @@ tidy(ChiCut)
 
 ```{r echo=FALSE}
 ChiCut <- chisq.test(x = table(diamonds$cut))
-knitr::kable(tidy(ChiCut), format = "html")
+tidy(ChiCut)
 ```
 
 ---
@@ -1254,5 +1230,5 @@ tidy(ChiCutColor)
 
 ```{r echo=FALSE}
 ChiCutColor <- chisq.test(x = table(diamonds$cut, diamonds$color))
-knitr::kable(tidy(ChiCutColor), format = "html")
+tidy(ChiCutColor)
 ```
