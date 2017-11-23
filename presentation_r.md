@@ -282,18 +282,6 @@ freq(diamonds$cut,
 > 
 > Faites un tableau de la variable `color`
 
-Nous pouvons ajouter le total à une table en utilisant la commande `adddmargins`.
-
-```r
-addmargins(table(diamonds$cut))
-```
-
-```
-## 
-##      Fair      Good Very Good   Premium     Ideal       Sum 
-##      1610      4906     12082     13791     21551     53940
-```
-
 ## Tableaux à deux variables
 
 Nous pouvons aussi créer des tableaux à deux variables avec la commande `table`. Créez un tableau avec les variables  `cut` et `color` de la base de données `diamonds`.
@@ -312,69 +300,58 @@ table(diamonds$cut,diamonds$color)
 ##   Ideal     2834 3903 3826 4884 3115 2093  896
 ```
 
-Vous pouvez également représentez votre tableau en utilisant des proportions avec la commande `prop.table`.
+Vous pouvez également représentez votre tableau en utilisant des proportions avec la commande `prop` de la librairie `questionr`.
 
 ```r
-prop.table(table(diamonds$cut,diamonds$color))
+prop(table(diamonds$cut,diamonds$color),
+     digits = 2)
 ```
 
 ```
 ##            
-##                       D           E           F           G           H
-##   Fair      0.003021876 0.004152762 0.005784205 0.005821283 0.005617353
-##   Good      0.012272896 0.017296997 0.016852058 0.016147571 0.013014461
-##   Very Good 0.028049685 0.044493882 0.040118650 0.042621431 0.033815350
-##   Premium   0.029718205 0.043325918 0.043214683 0.054208380 0.043752317
-##   Ideal     0.052539859 0.072358176 0.070930664 0.090545050 0.057749351
-##            
-##                       I           J
-##   Fair      0.003244346 0.002206155
-##   Good      0.009677419 0.005691509
-##   Very Good 0.022321098 0.012569522
-##   Premium   0.026473860 0.014979607
-##   Ideal     0.038802373 0.016611049
+##             D      E      F      G      H      I      J      Total 
+##   Fair        0.30   0.42   0.58   0.58   0.56   0.32   0.22   2.98
+##   Good        1.23   1.73   1.69   1.61   1.30   0.97   0.57   9.10
+##   Very Good   2.80   4.45   4.01   4.26   3.38   2.23   1.26  22.40
+##   Premium     2.97   4.33   4.32   5.42   4.38   2.65   1.50  25.57
+##   Ideal       5.25   7.24   7.09   9.05   5.77   3.88   1.66  39.95
+##   Total      12.56  18.16  17.69  20.93  15.39  10.05   5.21 100.00
 ```
 
-Vous pouvez ajouter une ligne et une colonne de **totaux** avec des fréquences.
+Vous pouvez obtenir les pourcentage en ligne avec la commande `rprop` de la librairie `questionr`.
 
 ```r
-addmargins(table(diamonds$cut,diamonds$color))
+rprop(table(diamonds$cut,diamonds$color),
+      digits = 2)
 ```
 
 ```
 ##            
-##                 D     E     F     G     H     I     J   Sum
-##   Fair        163   224   312   314   303   175   119  1610
-##   Good        662   933   909   871   702   522   307  4906
-##   Very Good  1513  2400  2164  2299  1824  1204   678 12082
-##   Premium    1603  2337  2331  2924  2360  1428   808 13791
-##   Ideal      2834  3903  3826  4884  3115  2093   896 21551
-##   Sum        6775  9797  9542 11292  8304  5422  2808 53940
+##             D      E      F      G      H      I      J      Total 
+##   Fair       10.12  13.91  19.38  19.50  18.82  10.87   7.39 100.00
+##   Good       13.49  19.02  18.53  17.75  14.31  10.64   6.26 100.00
+##   Very Good  12.52  19.86  17.91  19.03  15.10   9.97   5.61 100.00
+##   Premium    11.62  16.95  16.90  21.20  17.11  10.35   5.86 100.00
+##   Ideal      13.15  18.11  17.75  22.66  14.45   9.71   4.16 100.00
+##   Ensemble   12.56  18.16  17.69  20.93  15.39  10.05   5.21 100.00
 ```
 
-Vous pouvez ajouter une ligne et une colonne de **totaux** avec des fréquences relatives.
+Vous pouvez obtenir les pourcentage en colonne avec la commande `cprop` de la librairie `questionr`.
 
 ```r
-addmargins(prop.table(table(diamonds$cut,diamonds$color)))
+cprop(table(diamonds$cut,diamonds$color),
+      digits = 2)
 ```
 
 ```
 ##            
-##                       D           E           F           G           H
-##   Fair      0.003021876 0.004152762 0.005784205 0.005821283 0.005617353
-##   Good      0.012272896 0.017296997 0.016852058 0.016147571 0.013014461
-##   Very Good 0.028049685 0.044493882 0.040118650 0.042621431 0.033815350
-##   Premium   0.029718205 0.043325918 0.043214683 0.054208380 0.043752317
-##   Ideal     0.052539859 0.072358176 0.070930664 0.090545050 0.057749351
-##   Sum       0.125602521 0.181627735 0.176900260 0.209343715 0.153948832
-##            
-##                       I           J         Sum
-##   Fair      0.003244346 0.002206155 0.029847979
-##   Good      0.009677419 0.005691509 0.090952911
-##   Very Good 0.022321098 0.012569522 0.223989618
-##   Premium   0.026473860 0.014979607 0.255672970
-##   Ideal     0.038802373 0.016611049 0.399536522
-##   Sum       0.100519095 0.052057842 1.000000000
+##             D      E      F      G      H      I      J      Ensemble
+##   Fair        2.41   2.29   3.27   2.78   3.65   3.23   4.24   2.98  
+##   Good        9.77   9.52   9.53   7.71   8.45   9.63  10.93   9.10  
+##   Very Good  22.33  24.50  22.68  20.36  21.97  22.21  24.15  22.40  
+##   Premium    23.66  23.85  24.43  25.89  28.42  26.34  28.77  25.57  
+##   Ideal      41.83  39.84  40.10  43.25  37.51  38.60  31.91  39.95  
+##   Total     100.00 100.00 100.00 100.00 100.00 100.00 100.00 100.00
 ```
 
 # Graphiques
@@ -402,7 +379,7 @@ Tracez le diagramme à bandes de la variable `clarity`.
 qplot(diamonds$clarity, xlab="Clarté", ylab="Fréquence", main="Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-19-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
 
 En utilisant `ggplot`.
 
@@ -415,7 +392,7 @@ ggplot(diamonds, aes(clarity)) +
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-20-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-19-1.png)<!-- -->
 
 ## Les variables quantitatives
 
@@ -431,7 +408,7 @@ qplot(mtcars$cyl, xlab="Nombre de cylindres", ylab="Fréquence", main="Un beau t
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-21-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-20-1.png)<!-- -->
 
 En utilisant `ggplot`.
 
@@ -444,7 +421,7 @@ ggplot(mtcars, aes(cyl)) +
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-22-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-21-1.png)<!-- -->
 
 ### L'histogramme
 
@@ -458,7 +435,7 @@ qplot(diamonds$price, xlab="Prix", ylab="Fréquence", main="Un beau titre...")
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-23-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-22-1.png)<!-- -->
 
 En utilisant `ggplot`.
 
@@ -471,7 +448,7 @@ ggplot(diamonds, aes(price)) +
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-24-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-23-1.png)<!-- -->
 
 ### Le polygone de fréquences
 
@@ -486,7 +463,7 @@ ggplot(diamonds, aes(price)) +
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-25-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-24-1.png)<!-- -->
 
 Tracez l'histogramme et le polygone de fréquences superposés.
 
@@ -500,7 +477,7 @@ ggplot(diamonds, aes(price)) +
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-26-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-25-1.png)<!-- -->
 
 ### L'ogive des pourcentages cumulés
 
@@ -515,7 +492,7 @@ ggplot(diamonds, aes(price)) +
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-27-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-26-1.png)<!-- -->
 
 ## Représenter deux variables
 
@@ -532,7 +509,7 @@ ggplot(diamonds, aes(x=cut, fill=color))+
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-28-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-27-1.png)<!-- -->
 
 Tracez un diagramme à bandes comprenant la variable `cut` et la variable `color` avec les variables côtes à côtes. On utilise l'option `position="dodge"`.
 
@@ -545,7 +522,7 @@ ggplot(diamonds, aes(x=cut, fill=color))+
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-29-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-28-1.png)<!-- -->
 
 Tracez un diagramme à bandes comprenant la variable `cut` et la variable `color` avec des fréquences relatives. On utilise l'option `position="fill"`.
 
@@ -558,7 +535,7 @@ ggplot(diamonds, aes(x=cut, fill=color))+
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-30-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-29-1.png)<!-- -->
 
 ### Une variable qualitative et une variable quantitative
 
@@ -573,7 +550,7 @@ ggplot(diamonds, aes(x = cut, y = price)) +
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-31-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-30-1.png)<!-- -->
 
 ### Deux variables quantitatives
 
@@ -588,7 +565,7 @@ ggplot(diamonds, aes(x=carat, y=price))+
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-32-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-31-1.png)<!-- -->
 
 # Régression linéaire
 
@@ -604,7 +581,7 @@ ggplot(diamonds, aes(x=carat, y=price))+
     title = "Un beau titre...")
 ```
 
-![](presentation_r_files/figure-html/unnamed-chunk-33-1.png)<!-- -->
+![](presentation_r_files/figure-html/unnamed-chunk-32-1.png)<!-- -->
 
 Nous pouvons trouver les coefficients $a$ et $b$ de la droite $y=ax+b$ en utilisant la commande `lm`.
 
@@ -969,7 +946,7 @@ sessionInfo()
 ## [13] lattice_0.20-35  pkgconfig_2.0.1  rlang_0.1.4      psych_1.7.8     
 ## [17] rstudioapi_0.7   shiny_1.0.5      yaml_2.1.14      parallel_3.4.2  
 ## [21] haven_1.1.0      bindrcpp_0.2     dplyr_0.7.4      stringr_1.2.0   
-## [25] knitr_1.17       rprojroot_1.2    grid_3.4.2       glue_1.2.0      
+## [25] knitr_1.17.20    rprojroot_1.2    grid_3.4.2       glue_1.2.0      
 ## [29] R6_2.2.2         foreign_0.8-69   tidyr_0.7.2      purrr_0.2.4     
 ## [33] reshape2_1.4.2   magrittr_1.5     backports_1.1.1  scales_0.5.0    
 ## [37] htmltools_0.3.6  labelled_1.0.0   assertthat_0.2.0 mnormt_1.5-5    

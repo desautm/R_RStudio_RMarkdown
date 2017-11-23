@@ -454,29 +454,21 @@ freq(diamonds$cut,
 --
 
 ```{r eval=FALSE}
-table(diamonds$color)
+freq(diamonds$cut,
+     valid = FALSE,
+     digits = 2,
+     cum = TRUE,
+     total = TRUE)
 ```
 
 --
 
 ```{r echo=FALSE}
-table(diamonds$color)
-```
-
----
-
-Nous pouvons ajouter le total à une table en utilisant la commande `adddmargins`.
-
---
-
-```{r eval=FALSE}
-addmargins(table(diamonds$cut))
-```
-
---
-
-```{r echo=FALSE}
-addmargins(table(diamonds$cut))
+freq(diamonds$cut,
+     valid = FALSE,
+     digits = 2,
+     cum = TRUE,
+     total = TRUE)
 ```
 
 ---
@@ -507,50 +499,56 @@ table(diamonds$cut,diamonds$color)
 
 ---
 
-Vous pouvez également représentez votre tableau en utilisant des proportions avec la commande `prop.table`.
+Vous pouvez également représentez votre tableau en utilisant des proportions avec la commande `prop` de la librairie `questionr`.
 
 --
 
 ```{r eval=FALSE}
-prop.table(table(diamonds$cut,diamonds$color))
+prop(table(diamonds$cut,diamonds$color),
+     digits = 2)
 ```
 
 --
 
 ```{r echo=FALSE}
-prop.table(table(diamonds$cut,diamonds$color))
+prop(table(diamonds$cut,diamonds$color),
+     digits = 2)
 ```
 
 ---
 
-Vous pouvez ajouter une ligne et une colonne de **totaux** avec des fréquences.
+Vous pouvez obtenir les pourcentage en ligne avec la commande `rprop` de la librairie `questionr`.
 
 --
 
 ```{r eval=FALSE}
-addmargins(table(diamonds$cut,diamonds$color))
+rprop(table(diamonds$cut,diamonds$color),
+      digits = 2)
 ```
 
 --
 
 ```{r echo=FALSE}
-addmargins(table(diamonds$cut,diamonds$color))
+rprop(table(diamonds$cut,diamonds$color),
+      digits = 2)
 ```
 
 ---
 
-Vous pouvez ajouter une ligne et une colonne de **totaux** avec des fréquences relatives.
+Vous pouvez obtenir les pourcentage en colonne avec la commande `cprop` de la librairie `questionr`.
 
 --
 
 ```{r eval=FALSE}
-addmargins(prop.table(table(diamonds$cut,diamonds$color)))
+cprop(table(diamonds$cut,diamonds$color),
+      digits = 2)
 ```
 
 --
 
 ```{r echo=FALSE}
-addmargins(prop.table(table(diamonds$cut,diamonds$color)))
+cprop(table(diamonds$cut,diamonds$color),
+      digits = 2)
 ```
 
 ---

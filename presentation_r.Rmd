@@ -162,11 +162,6 @@ freq(diamonds$cut,
 > 
 > Faites un tableau de la variable `color`
 
-Nous pouvons ajouter le total à une table en utilisant la commande `adddmargins`.
-```{r}
-addmargins(table(diamonds$cut))
-```
-
 ## Tableaux à deux variables
 
 Nous pouvons aussi créer des tableaux à deux variables avec la commande `table`. Créez un tableau avec les variables  `cut` et `color` de la base de données `diamonds`.
@@ -174,19 +169,22 @@ Nous pouvons aussi créer des tableaux à deux variables avec la commande `table
 table(diamonds$cut,diamonds$color)
 ```
 
-Vous pouvez également représentez votre tableau en utilisant des proportions avec la commande `prop.table`.
+Vous pouvez également représentez votre tableau en utilisant des proportions avec la commande `prop` de la librairie `questionr`.
 ```{r}
-prop.table(table(diamonds$cut,diamonds$color))
+prop(table(diamonds$cut,diamonds$color),
+     digits = 2)
 ```
 
-Vous pouvez ajouter une ligne et une colonne de **totaux** avec des fréquences.
+Vous pouvez obtenir les pourcentage en ligne avec la commande `rprop` de la librairie `questionr`.
 ```{r}
-addmargins(table(diamonds$cut,diamonds$color))
+rprop(table(diamonds$cut,diamonds$color),
+      digits = 2)
 ```
 
-Vous pouvez ajouter une ligne et une colonne de **totaux** avec des fréquences relatives.
+Vous pouvez obtenir les pourcentage en colonne avec la commande `cprop` de la librairie `questionr`.
 ```{r}
-addmargins(prop.table(table(diamonds$cut,diamonds$color)))
+cprop(table(diamonds$cut,diamonds$color),
+      digits = 2)
 ```
 
 # Graphiques
