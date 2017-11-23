@@ -1,7 +1,7 @@
 ---
 title: "Une introduction au langage `R`, `RStudio` et `R Markdown`"
 author: "ECRIVEZ VOTRE NOM ICI"
-date: "Le 2017-11-22"
+date: "Le 2017-11-23"
 output:
   html_document:
     keep_md: true
@@ -258,6 +258,7 @@ table(diamonds$cut)
 ##      1610      4906     12082     13791     21551
 ```
 
+Nous pouvons également utiliser la commande `freq` de la librairie `questionr`.
 
 ```r
 freq(diamonds$cut,

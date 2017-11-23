@@ -12,7 +12,7 @@ class: center, middle, inverse, title-slide
 
 # Une introduction au langage <code>R</code>, <code>RStudio</code> et <code>R Markdown</code>
 ### Marc-André Désautels
-### Le 2017-11-22
+### Le 2017-11-23
 
 ---
 
@@ -517,6 +517,34 @@ table(diamonds$cut)
 
 ---
 
+Nous pouvons également utiliser la commande `freq` de la librairie `questionr`.
+
+--
+
+
+```r
+freq(diamonds$cut,
+     valid = FALSE,
+     digits = 2,
+     cum = TRUE,
+     total = TRUE)
+```
+
+--
+
+
+```
+##               n      %   %cum
+## Fair       1610   2.98   2.98
+## Good       4906   9.10  12.08
+## Very Good 12082  22.40  34.48
+## Premium   13791  25.57  60.05
+## Ideal     21551  39.95 100.00
+## Total     53940 100.00 100.00
+```
+
+---
+
 &gt; **Défi** :
 &gt; 
 &gt; Faites un tableau de la variable `color`
@@ -721,7 +749,7 @@ qplot(diamonds$clarity, xlab="Clarté", ylab="Fréquence", main="Un beau titre..
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-44-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-46-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -737,7 +765,7 @@ ggplot(diamonds, aes(clarity)) +
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-46-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-48-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 class: middle, center, inverse
@@ -762,7 +790,7 @@ qplot(mtcars$cyl, xlab="Nombre de cylindres", ylab="Fréquence", main="Un beau t
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-48-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-50-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -778,7 +806,7 @@ ggplot(mtcars, aes(cyl)) +
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-50-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-52-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 class: middle, center, inverse
@@ -803,7 +831,7 @@ qplot(diamonds$price, xlab="Prix", ylab="Fréquence", main="Un beau titre...")
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-52-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-54-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -819,7 +847,7 @@ ggplot(diamonds, aes(price)) +
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-54-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-56-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 class: middle, center, inverse
@@ -840,7 +868,7 @@ ggplot(diamonds, aes(price)) +
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-56-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-58-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -857,7 +885,7 @@ ggplot(diamonds, aes(price)) +
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-58-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-60-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 class: middle, center, inverse
@@ -878,7 +906,7 @@ ggplot(diamonds, aes(price)) +
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-60-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-62-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 class: middle, center, inverse
@@ -899,7 +927,7 @@ ggplot(diamonds, aes(x=cut, fill=color))+
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-62-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-64-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -915,7 +943,7 @@ ggplot(diamonds, aes(x=cut, fill=color))+
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-64-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-66-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -931,7 +959,7 @@ ggplot(diamonds, aes(x=cut, fill=color))+
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-66-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-68-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -947,7 +975,7 @@ ggplot(diamonds, aes(x = cut, y = price)) +
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-68-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-70-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -963,7 +991,7 @@ ggplot(diamonds, aes(x=carat, y=price))+
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-70-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-72-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 class: center, middle, inverse
@@ -985,7 +1013,7 @@ ggplot(diamonds, aes(x=carat, y=price))+
 
 --
 
-&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-72-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_presentation_r_files/figure-html/unnamed-chunk-74-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 

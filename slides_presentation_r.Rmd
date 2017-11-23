@@ -423,6 +423,30 @@ table(diamonds$cut)
 
 ---
 
+Nous pouvons également utiliser la commande `freq` de la librairie `questionr`.
+
+--
+
+```{r eval=FALSE}
+freq(diamonds$cut,
+     valid = FALSE,
+     digits = 2,
+     cum = TRUE,
+     total = TRUE)
+```
+
+--
+
+```{r echo=FALSE}
+freq(diamonds$cut,
+     valid = FALSE,
+     digits = 2,
+     cum = TRUE,
+     total = TRUE)
+```
+
+---
+
 > **Défi** :
 > 
 > Faites un tableau de la variable `color`

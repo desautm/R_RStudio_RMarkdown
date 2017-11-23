@@ -149,6 +149,7 @@ Nous pouvons créer un tableau à une variable à l'aide de la commande `table`.
 table(diamonds$cut)
 ```
 
+Nous pouvons également utiliser la commande `freq` de la librairie `questionr`.
 ```{r}
 freq(diamonds$cut,
      valid = FALSE,
