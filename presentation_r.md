@@ -1,7 +1,7 @@
 ---
 title: "Une introduction au langage `R`, `RStudio` et `R Markdown`"
 author: "ECRIVEZ VOTRE NOM ICI"
-date: "Le 2017-11-23"
+date: "Le 2017-11-30"
 output:
   html_document:
     keep_md: true

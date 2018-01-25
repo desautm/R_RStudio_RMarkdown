@@ -3,14 +3,14 @@ title: "Une introduction au langage `R`, `RStudio` et `R Markdown`"
 author: "ECRIVEZ VOTRE NOM ICI"
 date: "Le `r Sys.Date()`"
 output:
+  pdf_document:
+    toc: yes
+  word_document:
+    toc: yes
   html_document:
     keep_md: true
     toc: yes
     toc_float: yes
-  word_document:
-    toc: yes
-  pdf_document:
-    toc: yes
 ---
 
 ```{r setup, include=FALSE}
